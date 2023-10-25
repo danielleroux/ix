@@ -16,7 +16,7 @@ import BlazorIcon from '@site/static/img/blazor.svg';
 # Welcome to Siemens Industrial Experience
 
 <p className="text-l-title">
-Siemens Industrial Experience is an open-source design system for designers and developers to consistently create the perfect digital experience for partners and customers within industrial contexts. Siemens Industrial Experience gives you access to a broad range of UI patterns, web-based code implementations, design tools, resources and content guidelines to accelerate collaboration between designers, developers and writers, helping to build efficient and consistent products.
+Test
 </p>
 
 ## Guiding principles
