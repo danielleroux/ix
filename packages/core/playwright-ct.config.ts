@@ -19,6 +19,7 @@ import defaultConfig from './playwright.config';
 const config: PlaywrightTestConfig = {
   ...defaultConfig,
   testMatch: path.join(__dirname, 'src', 'components', '**', '*.ct.ts'),
+  reporter: process.env.CI ? 'blob' : 'html',
   projects: [
     {
       name: `chromium`,

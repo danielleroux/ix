@@ -21,7 +21,20 @@ jobs:
       - name: Build
         run: pnpm build --cache-dir=.turbo --filter \!documentation
 
-  testing:
+  unit:
+    needs: [build]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Test
+        run: pnpm run test --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-angular
+
+  visual-testing:
     needs: [build]
     timeout-minutes: 10
     runs-on: ubuntu-latest
@@ -35,11 +48,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/turbo
 
-      - name: Test
-        run: pnpm run test --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-angular
-
       - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-aggrid --shard ${{ matrix.shard }}
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-aggrid -- --shard ${{ matrix.shard }}
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
@@ -54,7 +64,7 @@ jobs:
   merge-reports:
     # Merge reports after playwright-tests, even if some shards have failed
     if: always()
-    needs: [testing]
+    needs: [visual-testing]
 
     runs-on: ubuntu-latest
     steps:
