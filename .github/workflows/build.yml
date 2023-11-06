@@ -24,6 +24,7 @@ jobs:
             - 'packages/core/**'
 
   build:
+    needs: changes
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
