@@ -49,7 +49,8 @@ jobs:
       - uses: ./.github/workflows/actions/turbo
 
       - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-aggrid -- --shard ${{ matrix.shard }}
+        run: |
+          pnpm --filter @siemens/ix run visual-regression --shard ${{ matrix.shard }}
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: always()
@@ -58,11 +59,13 @@ jobs:
           name: all-blob-reports
           path: |
             ./packages/core/blob-report
-            ./packages/aggrid/blob-report
           retention-days: 1
 
+          # TODO: Add aggrid
+          # ./packages/aggrid/blob-report
+
   merge-reports:
-    # Merge reports after playwright-tests, even if some shards have failed
+    # Do not merge reports if no visual regression test is failed
     if: always()
     needs: [visual-testing]
 
@@ -77,15 +80,19 @@ jobs:
           name: all-blob-reports
           path: |
             ./packages/core/all-blob-report
-            ./packages/aggrid/all-blob-report
+
+          # TODO: Add aggrid
+          # ./packages/aggrid/blob-report
 
       - name: Merge into HTML Report
         run: |
           pnpm exec playwright merge-reports --reporter html ./packages/core/all-blob-report
 
-      - name: Merge into HTML Report
-        run: |
-          pnpm exec playwright merge-reports --reporter html ./packages/aggrid/all-blob-report
+          # TODO: Add aggrid
+
+      # - name: Merge into HTML Report
+      #   run: |
+      #     pnpm exec playwright merge-reports --reporter html ./packages/aggrid/all-blob-report
 
       # - name: Upload HTML report
       #   uses: actions/upload-artifact@v3
