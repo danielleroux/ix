@@ -61,9 +61,6 @@ jobs:
             ./packages/core/blob-report
           retention-days: 1
 
-          # TODO: Add aggrid
-          # ./packages/aggrid/blob-report
-
   merge-reports:
     # Do not merge reports if no visual regression test is failed
     if: always()
@@ -81,14 +78,9 @@ jobs:
           path: |
             ./packages/core/all-blob-report
 
-          # TODO: Add aggrid
-          # ./packages/aggrid/blob-report
-
       - name: Merge into HTML Report
         run: |
           pnpm exec playwright merge-reports --reporter html ./packages/core/all-blob-report
-
-          # TODO: Add aggrid
 
       # - name: Merge into HTML Report
       #   run: |
