@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2022 Siemens AG
+SPDX-FileCopyrightText: 2023 Siemens AG
 
 SPDX-License-Identifier: MIT
 -->
@@ -8,23 +8,27 @@ SPDX-License-Identifier: MIT
 <html>
   <head>
     <title>Pill example</title>
-    <script type="module" crossorigin src="../assets/index.6533181e.js"></script>
-    <script type="module" crossorigin src="../assets/init.2977fa8d.js"></script>
-    <link rel="stylesheet" href="../assets/index.7236d106.css">
-    <link rel="stylesheet" href="../assets/init.09a7dcd2.css">
+    <script type="module" crossorigin src="../assets/index.ca2eefaa.js"></script>
+    <script type="module" crossorigin src="../assets/init.c2bb2f41.js"></script>
+    <link rel="stylesheet" href="../assets/index.06f395a9.css">
+    <link rel="stylesheet" href="../assets/init.70db4281.css">
   </head>
   <body class="theme-brand-dark">
     <!-- Preview code -->
     <form class="needs-validation m-2">
       <input
-        class="form-control"
-        defaultValue="Some example text"
+        value="Some example text"
         placeholder="Enter text here"
         type="text"
         readonly
       />
     </form>
     <!-- Preview code -->
+    <script>
+      document
+        .querySelector('form')
+        .addEventListener('submit', (evt) => evt.preventDefault());
+    </script>
     
   </body>
 </html>
