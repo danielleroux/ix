@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2022 Siemens AG
+SPDX-FileCopyrightText: 2023 Siemens AG
 
 SPDX-License-Identifier: MIT
 -->
@@ -9,10 +9,18 @@ SPDX-License-Identifier: MIT
   <head>
     <title>Blind example</title>
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
-    <script type="module" crossorigin src="../assets/index.6533181e.js"></script>
-    <script type="module" crossorigin src="../assets/init.2977fa8d.js"></script>
-    <link rel="stylesheet" href="../assets/index.7236d106.css">
-    <link rel="stylesheet" href="../assets/init.09a7dcd2.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-alpine.css"
+    />
+    <script type="module" crossorigin src="../assets/index.ca2eefaa.js"></script>
+    <script type="module" crossorigin src="../assets/init.c2bb2f41.js"></script>
+    <link rel="stylesheet" href="../assets/index.06f395a9.css">
+    <link rel="stylesheet" href="../assets/init.70db4281.css">
   </head>
   <body class="theme-brand-dark">
     <!-- Preview code -->
@@ -27,14 +35,40 @@ SPDX-License-Identifier: MIT
 
         const gridOptions = {
           columnDefs: [
-            { field: 'make', resizable: true, checkboxSelection: true },
-            { field: 'model', resizable: true, sortable: true, filter: true },
-            { field: 'price', resizable: true },
+            {
+              field: 'type',
+              headerName: 'Type',
+              resizable: true,
+              checkboxSelection: true,
+            },
+            {
+              field: 'status',
+              headerName: 'Status',
+              resizable: true,
+              sortable: true,
+              filter: true,
+            },
+            { field: 'hwVersion', headerName: 'HW version', resizable: true },
           ],
           rowData: [
-            { make: 'Toyota', model: 'Celica', price: 35000, checked: false },
-            { make: 'Ford', model: 'Mondeo', price: 32000, checked: true },
-            { make: 'Porsche', model: 'Boxster', price: 72000, checked: false },
+            {
+              type: 'Equipment',
+              status: 'Normal',
+              hwVersion: '2.0',
+              checked: false,
+            },
+            {
+              type: 'Positioner',
+              status: 'Maintenance',
+              hwVersion: '1.0',
+              checked: true,
+            },
+            {
+              type: 'Pressure sensor',
+              status: 'Unknown',
+              hwVersion: 'N/A',
+              checked: false,
+            },
           ],
           rowSelection: 'multiple',
           suppressCellFocus: true,
