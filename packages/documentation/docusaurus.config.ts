@@ -62,6 +62,8 @@ const customCss = [
 
 const baseUrl = process.env.BASE_URL || '/';
 
+console.log('Using BASE_URL', baseUrl);
+
 const config: Config = {
   title: 'Siemens Industrial Experience',
   tagline: 'Siemens Industrial Experience',

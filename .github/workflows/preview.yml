@@ -31,12 +31,3 @@ jobs:
           preview-branch: gh-pages
           umbrella-dir: pr-preview
           action: auto
-
-      - name: Deploy preview 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: ./packages/documentation/build
-          target-folder: version-dev
-          clean-exclude: |
-            version-*
-            pr-preview
