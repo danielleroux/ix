@@ -21,6 +21,28 @@ jobs:
       - name: Build
         run: pnpm build --cache-dir=.turbo --filter \!documentation
 
+  visual-testing:
+    needs: [build]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Visual Regression
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-aggrid
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: |
+            ./packages/core/playwright-report/
+            ./packages/aggrid/playwright-report/
+          retention-days: 2
+
   unit:
     needs: [build]
     timeout-minutes: 10
@@ -34,64 +56,14 @@ jobs:
       - name: Test
         run: pnpm run test --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-angular
 
-  visual-testing:
-    needs: [build]
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [1/4, 2/4, 3/4, 4/4]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
-
-      - name: Visual Regression
-        run: |
-          pnpm --filter @siemens/ix run visual-regression --shard ${{ matrix.shard }}
-
-      - name: Upload blob report to GitHub Actions Artifacts
+      - uses: actions/upload-artifact@v3
         if: always()
-        uses: actions/upload-artifact@v3
         with:
-          name: all-blob-reports
+          name: playwright-report
           path: |
-            ./packages/core/blob-report
-          retention-days: 1
-
-  merge-reports:
-    # Do not merge reports if no visual regression test is failed
-    if: always()
-    needs: [visual-testing]
-
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
-
-      - name: Download blob reports from GitHub Actions Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: all-blob-reports
-          path: |
-            ./packages/core/all-blob-report
-
-      - name: Merge into HTML Report
-        run: |
-          pnpm exec playwright merge-reports --reporter html ./packages/core/all-blob-report
-
-      # - name: Merge into HTML Report
-      #   run: |
-      #     pnpm exec playwright merge-reports --reporter html ./packages/aggrid/all-blob-report
-
-      # - name: Upload HTML report
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: html-report--attempt-${{ github.run_attempt }}
-      #     path: playwright-report
-      #     retention-days: 14
+            ./packages/core/playwright-report/
+            ./packages/aggrid/playwright-report/
+          retention-days: 2
 
   lint:
     runs-on: ubuntu-latest
