@@ -46,8 +46,29 @@ jobs:
             ./packages/core/blob-report/
           retention-days: 1
 
+  visual-testing-aggrid:
+    needs: [build]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Visual Regression
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-aggrid
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: aggrid-html-report--attempt-${{ github.run_attempt }}
+          path: |
+            ./packages/core/playwright-report/
+          retention-days: 1
+
   merge-core-reports:
-      if: always()
+      if: failure()
       needs: [visual-testing-core]
 
       runs-on: ubuntu-latest
