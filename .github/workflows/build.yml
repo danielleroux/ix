@@ -27,27 +27,62 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1/4, 2/4, 3/4, 4/4]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/turbo
-
-      # - name: Install Playwright Browsers
-      #   run: pnpm playwright install chromium --with-deps
 
       - name: Test
         run: pnpm run test --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-angular
 
       - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-aggrid
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-aggrid --shard ${{ matrix.shard }}
 
-      - uses: actions/upload-artifact@v3
+      - name: Upload blob report to GitHub Actions Artifacts
         if: always()
+        uses: actions/upload-artifact@v3
         with:
-          name: playwright-report
+          name: all-blob-reports
           path: |
-            ./packages/core/playwright-report/
-            ./packages/aggrid/playwright-report/
-          retention-days: 2
+            ./packages/core/blob-report
+            ./packages/aggrid/blob-report
+          retention-days: 1
+
+  merge-reports:
+    # Merge reports after playwright-tests, even if some shards have failed
+    if: always()
+    needs: [testing]
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Download blob reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: all-blob-reports
+          path: |
+            ./packages/core/all-blob-report
+            ./packages/aggrid/all-blob-report
+
+      - name: Merge into HTML Report
+        run: |
+          pnpm exec playwright merge-reports --reporter html ./packages/core/all-blob-report
+
+      - name: Merge into HTML Report
+        run: |
+          pnpm exec playwright merge-reports --reporter html ./packages/aggrid/all-blob-report
+
+      # - name: Upload HTML report
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: html-report--attempt-${{ github.run_attempt }}
+      #     path: playwright-report
+      #     retention-days: 14
 
   lint:
     runs-on: ubuntu-latest
