@@ -10,6 +10,19 @@ on:
   workflow_call:
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      core: ${{ steps.changes.outputs.core }}
+    steps:
+    - uses: actions/checkout@v3
+    - uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        filters: |
+          core:
+            - 'packages/core/**'
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +35,8 @@ jobs:
         run: pnpm build --cache-dir=.turbo --filter \!documentation
 
   visual-testing-core:
-    needs: [build]
+    if: ${{ needs.changes.outputs.core == 'true' }}
+    needs: [build, changes]
     timeout-minutes: 10
     runs-on: ubuntu-latest
     container:
