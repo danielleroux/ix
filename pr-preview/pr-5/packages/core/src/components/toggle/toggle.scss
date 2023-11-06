@@ -1,0 +1,160 @@
+/*
+ * SPDX-FileCopyrightText: 2023 Siemens AG
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@import 'mixins/hover';
+@import 'mixins/shadow-dom/component';
+
+:host {
+  @include ix-component;
+  display: inline-flex;
+  position: relative;
+  height: 2rem;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 0.25rem;
+
+  cursor: pointer;
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    min-width: 3rem;
+    max-width: 3rem;
+    height: 1.5rem;
+    margin-right: 0.25rem;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--theme-switch-off--background);
+    transition: 150ms;
+    border-radius: 1.5rem;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--theme-switch-thumb-off--background);
+    transition: 150ms;
+    border-radius: 50%;
+  }
+
+  input {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  input:focus-visible + .switch > .slider {
+    outline: 1px solid var(--theme-color-focus-bdr);
+    outline-offset: 1px;
+  }
+
+  input:checked + .switch > .slider {
+    background-color: var(--theme-switch-on--background);
+  }
+
+  input:checked + .switch > .slider::before {
+    background-color: var(--theme-switch-thumb-on--background);
+    transform: translateX(1.35rem);
+  }
+
+  // Toggle NOT checked
+  input + .switch:hover > .slider {
+    background-color: var(--theme-switch-off--background--hover);
+  }
+
+  input + .switch:hover > .slider:before {
+    background-color: var(--theme-switch-thumb-off--background--hover);
+  }
+
+  input + .switch:active > .slider {
+    background-color: var(--theme-switch-off--background--active);
+  }
+
+  input + .switch:active > .slider:before {
+    background-color: var(--theme-switch-thumb-off--background--active);
+  }
+
+  // Toggle checked
+  input:checked + .switch:hover > .slider {
+    background-color: var(--theme-switch-on--background--hover);
+  }
+
+  input:checked + .switch:hover > .slider:before {
+    background-color: var(--theme-switch-thumb-on--background--hover);
+  }
+
+  input:checked + .switch:active > .slider {
+    background-color: var(--theme-switch-on--background--active);
+  }
+
+  input:checked + .switch:active > .slider:before {
+    background-color: var(--theme-switch-thumb-on--background--active);
+  }
+
+  input:indeterminate + .switch > .slider::before {
+    transform: translateX(0.7rem);
+  }
+
+  .toggle-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+:host(.disabled) {
+  pointer-events: none;
+
+  input + .switch {
+    opacity: 0.5;
+  }
+
+  input + .switch > .slider {
+    background-color: var(--theme-switch-off--background--disabled);
+  }
+
+  input + .switch > .slider:before {
+    background-color: var(--theme-switch-thumb-off--background--disabled);
+  }
+
+  input:checked + .switch > .slider {
+    background-color: var(--theme-switch-on--background--disabled);
+  }
+
+  input:checked + .switch > .slider:before {
+    background-color: var(--theme-switch-thumb-on--background--disabled);
+  }
+
+  .toggle-text {
+    color: var(--theme-color-weak-text);
+  }
+}

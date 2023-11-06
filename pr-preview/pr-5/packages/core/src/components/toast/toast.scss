@@ -1,0 +1,102 @@
+/*
+ * SPDX-FileCopyrightText: 2023 Siemens AG
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+@import 'common-variables';
+@import 'mixins/hover';
+@import 'mixins/text-truncation';
+@import 'mixins/shadow-dom/component';
+@import 'legacy/mixins/fonts';
+
+:host {
+  @include ix-component;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 17.5rem;
+  max-width: 17.5rem;
+  min-height: 3.5rem;
+
+  pointer-events: all;
+
+  background-color: var(--theme-toast--background);
+  border: var(--theme-toast--border-thickness) solid
+    var(--theme-toast--border-color);
+  border-radius: var(--theme-toast--border-radius);
+  box-shadow: var(--theme-toast--box-shadow);
+
+  --animate-duration: #{$medium-time};
+
+  .toast-body {
+    display: flex;
+    position: relative;
+    min-height: 3.5rem;
+    width: 100%;
+    flex-grow: 1;
+    padding: 0.75rem;
+
+    .toast-icon {
+      display: flex;
+      align-items: flex-start;
+      margin-right: $default-space;
+    }
+
+    .toast-content {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+      width: 100%;
+
+      .toast-title {
+        @include text-default-title-single;
+        margin: 0.25rem 0px;
+      }
+
+      .toast-message {
+        min-width: 0;
+
+        @include text-default;
+      }
+    }
+
+    .toast-icon + .toast-content {
+      max-width: 10.25rem;
+    }
+  }
+
+  .toast-close {
+    display: flex;
+    position: relative;
+    pointer-events: all;
+    margin-left: auto;
+    margin-right: 0px;
+  }
+
+  .toast-progress-bar {
+    position: absolute;
+    bottom: 0;
+    height: $tiny-space;
+    width: 100%;
+    background-color: var(--theme-toast-timer-value--background);
+    transform-origin: left;
+
+    &--animated {
+      animation: trackProgress linear 1 forwards;
+    }
+  }
+
+  @keyframes trackProgress {
+    0% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0);
+    }
+  }
+}

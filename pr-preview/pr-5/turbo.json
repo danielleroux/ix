@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "globalDotEnv": [".env"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "components/**",
+        "dist/**",
+        "dist-css/**",
+        "build/**",
+        "www/**",
+        "loader/**",
+        "component-doc.json",
+        "components/**"
+      ],
+      "outputMode": "new-only"
+    },
+    "start": {
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "lint": {
+      "cache": false
+    },
+    "visual-regression": {
+      "dependsOn": ["build"],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "cache": false
+    }
+  }
+}
