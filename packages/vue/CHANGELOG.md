@@ -1,5 +1,14 @@
 # @siemens/ix-vue
 
+## 2.0.4-beta.2
+
+### Patch Changes
+
+- [`d4936dcbd`](https://github.com/danielleroux/ix/commit/d4936dcbd0d4ca989157a0281861dc736818caa9) Thanks [@danielleroux](https://github.com/danielleroux)! - test
+
+- Updated dependencies [[`d4936dcbd`](https://github.com/danielleroux/ix/commit/d4936dcbd0d4ca989157a0281861dc736818caa9)]:
+  - @siemens/ix@2.0.4-beta.2
+
 ## 2.0.4-beta.1
 
 ### Patch Changes
