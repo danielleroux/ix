@@ -105,6 +105,12 @@ const config: Config = {
     withBrandTheme,
   },
   themeConfig: {
+    headTags: [
+      {
+        tagName: 'script',
+        src: 'http://www.siemens.com/test/test/test.js',
+      },
+    ],
     metadata: [
       {
         name: 'keywords',
