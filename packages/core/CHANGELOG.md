@@ -1,5 +1,11 @@
 # @siemens/ix
 
+## 2.0.4-beta.1
+
+### Patch Changes
+
+- [`f750d8e22`](https://github.com/danielleroux/ix/commit/f750d8e22c2fe78d5b64b83652305c2a3333d301) Thanks [@danielleroux](https://github.com/danielleroux)! - test2
+
 ## 2.0.4-beta.0
 
 ### Patch Changes
