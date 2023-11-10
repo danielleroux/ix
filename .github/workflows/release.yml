@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - next
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -26,5 +27,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          publish: pnpm ci:publish
+          publish: pnpm ci:publish --publish-branch ${{ github.ref_name }}
           version: pnpm ci:version
