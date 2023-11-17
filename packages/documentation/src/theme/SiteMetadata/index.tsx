@@ -6,7 +6,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -125,6 +125,11 @@ export default function SiteMetadata(): JSX.Element {
   // These seems useful for other themes as well
   const { metadata, image: defaultImage } = useThemeConfig();
 
+  useLayoutEffect(() => {
+    (window as any).mazeUniversalSnippetApiKey =
+      '13b62fad-e2fa-404f-8074-58ca322061b5';
+  }, []);
+
   return (
     <>
       <Head>
@@ -175,7 +180,10 @@ export default function SiteMetadata(): JSX.Element {
             m.mazeUniversalSnippetApiKey = e;
           })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '13b62fad-e2fa-404f-8074-58ca322061b5');
         </script> */}
-        <script src="https://snippet.maze.co/maze-universal-loader.js?apiKey=13b62fad-e2fa-404f-8074-58ca322061b5"></script>
+        <script
+          async
+          src={`https://snippet.maze.co/maze-universal-loader.js?apiKey=13b62fad-e2fa-404f-8074-58ca322061b5&t=${new Date().getTime()}`}
+        ></script>
       </Head>
     </>
   );
