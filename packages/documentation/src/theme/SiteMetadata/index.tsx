@@ -126,8 +126,28 @@ export default function SiteMetadata(): JSX.Element {
   const { metadata, image: defaultImage } = useThemeConfig();
 
   useLayoutEffect(() => {
-    (window as any).mazeUniversalSnippetApiKey =
-      '13b62fad-e2fa-404f-8074-58ca322061b5';
+    const e = '13b62fad-e2fa-404f-8074-58ca322061b5';
+    const z = 'https://snippet.maze.co/maze-universal-loader.js';
+    let t: any;
+    const m = window;
+    try {
+      t = m.sessionStorage.getItem('maze-us');
+    } catch (err) {}
+
+    if (!t) {
+      t = new Date().getTime();
+      try {
+        m.sessionStorage.setItem('maze-us', t);
+      } catch (err) {}
+    }
+
+    (window as any).mazeUniversalSnippetApiKey = e;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = z + '?t=' + t + '&apiKey=' + e;
+
+    window.document.head.appendChild(script);
   }, []);
 
   return (
@@ -180,10 +200,10 @@ export default function SiteMetadata(): JSX.Element {
             m.mazeUniversalSnippetApiKey = e;
           })(window, document, 'https://snippet.maze.co/maze-universal-loader.js', '13b62fad-e2fa-404f-8074-58ca322061b5');
         </script> */}
-        <script
+        {/* <script
           async
           src={`https://snippet.maze.co/maze-universal-loader.js?apiKey=13b62fad-e2fa-404f-8074-58ca322061b5&t=${new Date().getTime()}`}
-        ></script>
+        ></script> */}
       </Head>
     </>
   );
