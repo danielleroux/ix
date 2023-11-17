@@ -1,0 +1,49 @@
+<!--
+SPDX-FileCopyrightText: 2023 Siemens AG
+
+SPDX-License-Identifier: MIT
+-->
+
+<!DOCTYPE html>
+  <html>
+  <head>
+    <title>Date dropdown example</title>
+    <script type="module" crossorigin src="../assets/index.439a7cb2.js"></script>
+    <script type="module" crossorigin src="../assets/init.5310fdaa.js"></script>
+    <link rel="stylesheet" href="../assets/index.06f395a9.css">
+    <link rel="stylesheet" href="../assets/init.70db4281.css">
+  </head>
+
+  <body class="theme-brand-dark">
+    <!-- Preview code -->
+    <ix-date-dropdown></ix-date-dropdown>
+    <!-- Preview code -->
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
+    <script>
+      document.querySelector('ix-date-dropdown').dateRangeOptions = [
+        {
+          label: 'No time limit',
+          getValue: () => {
+            return {from: undefined, to: window.dayjs()}
+          }
+        },
+        {
+          label: 'Today',
+          getValue: () => {
+            const today = window.dayjs();
+            return { from: today, to: today };
+          },
+          },
+          {
+            label: 'Last 7 days',
+              getValue: () => {
+            const today = window.dayjs();
+            return { from: today.subtract(7, 'day'), to: today };
+          },
+        },
+      ]
+    </script>
+    
+  </body>
+</html>
