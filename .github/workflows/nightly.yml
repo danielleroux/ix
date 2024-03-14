@@ -62,4 +62,4 @@ jobs:
           git config --global user.email "<>"
           git add -A
           git commit -m "Nightly build $(date +"%Y-%m-%d %T") - $GIT_COMMIT_ID"
-          echo $(git log)
+          echo $(git remote --verbose)
