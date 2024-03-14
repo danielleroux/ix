@@ -30,36 +30,7 @@ jobs:
       - name: Build
         run: pnpm build --cache-dir=.turbo --filter \!documentation
 
-      - name: Prepare ix repo
-        uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/push-remote
         with:
-          path: 'nightly_store_ix'
-          ref: 'ix'
-          repository: 'danielleroux/ix-nightlies'
-          token: ${{ secrets. NIGHTLY_STORE }}
-          fetch-depth: 0
-          persist-credentials: true
-
-      - name: Copy build files
-        shell: bash
-        run: |
-          ROOT_PATH=$(pwd)
-          cd ./packages/core
-          TAR_FILE=$(pnpm pack)
-          tar -xvf $TAR_FILE -C $ROOT_PATH/nightly_store_ix
-
-      - name: Push to remote
-        env:
-          GIT_COMMIT_ID: ${{ steps.gitcommit.outputs.GIT_COMMIT_ID }}
-        shell: bash
-        working-directory: nightly_store_ix
-        run: |
-          git ls-files -z | xargs -0 rm -rf
-          git ls-tree --name-only -d -r -z HEAD | sort -rz | xargs -0 rmdir
-          mv ./package/* .
-          rm -rf package
-          git config --global user.name "ix builder [bot]"
-          git config --global user.email "<>"
-          git add -A
-          git commit -m "Nightly build $(date +"%Y-%m-%d %T") - $GIT_COMMIT_ID"
-          git push
+          internal-name: core
+          branch-name: ix
