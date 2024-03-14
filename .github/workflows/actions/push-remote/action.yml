@@ -35,8 +35,6 @@ runs:
         tar -xf $TAR_FILE -C $ROOT_PATH/nightly_store_${{ inputs.branch-name }}
 
     - name: Push to remote
-      env:
-        GIT_COMMIT_ID: ${{ inputs.commit_id }}
       shell: bash
       working-directory: nightly_store_${{ inputs.branch-name }}
       run: |
@@ -50,6 +48,6 @@ runs:
         if [[ $(git status --porcelain) == '' ]]; then
           echo "No changes. Push to remote skipped!"
         else
-          git commit -m "Nightly build $(date +"%Y-%m-%d %T") - $GIT_COMMIT_ID"
+          git commit -m "Nightly build $(date +"%Y-%m-%d %T") - ${{ inputs.commit_id }}"
           git push
         fi
