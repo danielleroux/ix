@@ -32,7 +32,7 @@ runs:
         ROOT_PATH=$(pwd)
         cd ./packages/${{ inputs.internal-name }}
         TAR_FILE=$(pnpm pack)
-        tar -xvf $TAR_FILE -C $ROOT_PATH/nightly_store_${{ inputs.branch-name }}
+        tar -xf $TAR_FILE -C $ROOT_PATH/nightly_store_${{ inputs.branch-name }}
 
     - name: Push to remote
       env:
