@@ -18,12 +18,6 @@ jobs:
       - name: Build
         run: pnpm build --cache-dir=.turbo --filter \!documentation
 
-      - name: Pack @siemens/ix
-        shell: bash
-        run: |
-          cd ./packages/core
-          pnpm pack
-
       - name: Prepare ix repo
         uses: actions/checkout@v3
         with:
@@ -33,3 +27,16 @@ jobs:
           token: ${{ secrets. NIGHTLY_STORE }}
           fetch-depth: 0
           persist-credentials: true
+
+      - name: Copy build files
+        shell: bash
+        run: |
+          cd ./packages/core
+          TAR_FILE=$(pnpm pack)
+          tar -xvf $TAR_FILE -C ../../nightly_store_ix
+
+      - name: Debug
+        shell: bash
+        run: |
+          ls -la nightly_store_ix
+          git status
