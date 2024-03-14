@@ -47,6 +47,9 @@ runs:
         git config --global user.name "ix builder [bot]"
         git config --global user.email "<>"
         git add -A
-        git commit -m "Nightly build $(date +"%Y-%m-%d %T") - $GIT_COMMIT_ID"
-        git push --set-upstream origin ${{ inputs.branch-name }}
-
+        if [[ $(git status --porcelain) == '' ]]; then
+          echo "No changes. Push to remote skipped!"
+        else
+          git commit -m "Nightly build $(date +"%Y-%m-%d %T") - $GIT_COMMIT_ID"
+          git push --set-upstream origin ${{ inputs.branch-name }}
+        fi
