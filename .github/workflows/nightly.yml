@@ -37,3 +37,4 @@ jobs:
           internal-name: core
           branch-name: ix
           commit_id: $GIT_COMMIT_ID
+          token: ${{ secrets.NIGHTLY_STORE }}

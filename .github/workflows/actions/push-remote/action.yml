@@ -10,6 +10,9 @@ inputs:
   commit_id:
     description: 'commit id'
 
+  token:
+    description: 'commit id'
+
 runs:
   using: 'composite'
   steps:
@@ -19,7 +22,7 @@ runs:
         path: 'nightly_store_${{ inputs.remote-branch }}'
         ref: ${{ inputs.remote-branch }}
         repository: 'danielleroux/ix-nightlies'
-        token: ${{ secrets.NIGHTLY_STORE }}
+        token: ${{ inputs.token }}
         fetch-depth: 0
         persist-credentials: true
 
