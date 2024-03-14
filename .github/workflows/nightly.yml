@@ -45,5 +45,8 @@ jobs:
         shell: bash
         working-directory: nightly_store_ix
         run: |
-          ls -la
-          git status
+          git config --global user.name "ix builder [bot]"
+          git config --global user.email "<>"
+          mv ./package/* .
+          git add -A
+          git commit -m "snapshot: some info and <date>"
