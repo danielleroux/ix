@@ -47,11 +47,11 @@ jobs:
         working-directory: nightly_store_ix
         run: |
           git ls-files -z | xargs -0 rm -rf
-          ls -la
-          # mv ./package/* .
-          # rm -rf package
-          # git config --global user.name "ix builder [bot]"
-          # git config --global user.email "<>"
-          # git add -A
-          # git commit -m "snapshot: some info and <date>"
-          # echo $(git log)
+          git ls-tree --name-only -d -r -z HEAD | sort -rz | xargs -0 rmdir
+          mv ./package/* .
+          rm -rf package
+          git config --global user.name "ix builder [bot]"
+          git config --global user.email "<>"
+          git add -A
+          git commit -m "snapshot: some info and <date>"
+          echo $(git log)
