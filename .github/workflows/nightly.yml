@@ -37,16 +37,19 @@ jobs:
       - name: Copy build files
         shell: bash
         run: |
+          ROOT_PATH=$(pwd)
           cd ./packages/core
           TAR_FILE=$(pnpm pack)
-          tar -xvf $TAR_FILE -C ../../nightly_store_ix
+          tar -xvf $TAR_FILE -C $ROOT_PATH/nightly_store_ix
 
       - name: Debug
         shell: bash
         working-directory: nightly_store_ix
         run: |
-          git config --global user.name "ix builder [bot]"
-          git config --global user.email "<>"
-          mv ./package/* .
-          git add -A
-          git commit -m "snapshot: some info and <date>"
+          ls -la .
+          ls -la package
+          # mv ./package/* .
+          # git config --global user.name "ix builder [bot]"
+          # git config --global user.email "<>"
+          # git add -A
+          # git commit -m "snapshot: some info and <date>"
