@@ -4,7 +4,7 @@ inputs:
   internal-name:
     default: 'core'
 
-  remote-branch: # id of input
+  branch-name: # id of input
     default: 'ix'
 
   commit_id:
@@ -16,11 +16,11 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Prepare ${{ inputs.remote-branch }} repo
+    - name: Prepare ${{ inputs.branch-name }} repo
       uses: actions/checkout@v3
       with:
-        path: 'nightly_store_${{ inputs.remote-branch }}'
-        ref: ${{ inputs.remote-branch }}
+        path: 'nightly_store_${{ inputs.branch-name }}'
+        ref: ${{ inputs.branch-name }}
         repository: 'danielleroux/ix-nightlies'
         token: ${{ inputs.token }}
         fetch-depth: 0
@@ -32,13 +32,13 @@ runs:
         ROOT_PATH=$(pwd)
         cd ./packages/${{ inputs.internal-name }}
         TAR_FILE=$(pnpm pack)
-        tar -xvf $TAR_FILE -C $ROOT_PATH/nightly_store_${{ inputs.remote-branch }}
+        tar -xvf $TAR_FILE -C $ROOT_PATH/nightly_store_${{ inputs.branch-name }}
 
     - name: Push to remote
       env:
         GIT_COMMIT_ID: ${{ inputs.commit_id }}
       shell: bash
-      working-directory: nightly_store_${{ inputs.remote-branch }}
+      working-directory: nightly_store_${{ inputs.branch-name }}
       run: |
         git ls-files -z | xargs -0 rm -rf
         git ls-tree --name-only -d -r -z HEAD | sort -rz | xargs -0 rmdir
