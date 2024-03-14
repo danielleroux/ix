@@ -29,6 +29,7 @@ jobs:
         with:
           path: 'nightly_store_ix'
           ref: 'ix'
+          repository: 'danielleroux/ix-nightlies'
           token: ${{ secrets. NIGHTLY_STORE }}
           fetch-depth: 0
           persist-credentials: true
