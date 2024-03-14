@@ -1,9 +1,11 @@
 name: nightly
 
 on:
+  schedule:
+    - cron: '0 8,16 * * 1-5'
   push:
     branches:
-      - 'nightly-test'
+      - 'main'
   workflow_dispatch:
 
 jobs:
@@ -12,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: Store commit id
         id: gitcommit
