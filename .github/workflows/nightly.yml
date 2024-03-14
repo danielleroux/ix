@@ -13,6 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Copy build files
+        shell: bash
+        run: |
+          rm -rf .git
+          rm -rf .gitignore
+
       - uses: ./.github/workflows/actions/turbo
 
       - name: Build
