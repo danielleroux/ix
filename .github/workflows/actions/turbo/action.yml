@@ -39,6 +39,6 @@ runs:
     - name: Install dependencies
       shell: bash
       run: |
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=TRUE
+        PUPPETEER_SKIP_DOWNLOAD=TRUE
         pnpm install
 
