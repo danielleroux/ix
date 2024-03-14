@@ -37,6 +37,7 @@ jobs:
 
       - name: Debug
         shell: bash
+        working-directory: nightly_store_ix
         run: |
-          ls -la nightly_store_ix
+          ls -la
           git status
