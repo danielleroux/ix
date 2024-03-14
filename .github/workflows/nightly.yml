@@ -1,6 +1,10 @@
 name: nightly
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - 'nightly-test'
+  workflow_dispatch:
 
 jobs:
   deploy_nightly:
@@ -29,4 +33,3 @@ jobs:
           token: ${{ secrets. NIGHTLY_STORE }}
           fetch-depth: 0
           persist-credentials: true
-
