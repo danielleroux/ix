@@ -7,6 +7,9 @@ inputs:
   remote-branch: # id of input
     default: 'ix'
 
+  commit_id:
+    description: 'commit id'
+
 runs:
   using: 'composite'
   steps:
@@ -16,7 +19,7 @@ runs:
         path: 'nightly_store_${{ inputs.remote-branch }}'
         ref: ${{ inputs.remote-branch }}
         repository: 'danielleroux/ix-nightlies'
-        token: ${{ secrets. NIGHTLY_STORE }}
+        token: ${{ secrets.NIGHTLY_STORE }}
         fetch-depth: 0
         persist-credentials: true
 
@@ -30,7 +33,7 @@ runs:
 
     - name: Push to remote
       env:
-        GIT_COMMIT_ID: ${{ steps.gitcommit.outputs.GIT_COMMIT_ID }}
+        GIT_COMMIT_ID: ${{ inputs.commit_id }}
       shell: bash
       working-directory: nightly_store_${{ inputs.remote-branch }}
       run: |
