@@ -1,0 +1,32 @@
+name: nightly
+
+on: workflow_dispatch
+
+jobs:
+  deploy_nightly:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Build
+        run: pnpm build --cache-dir=.turbo --filter \!documentation
+
+      - name: Pack @siemens/ix
+        shell: bash
+        run: |
+          cd ./packages/core
+          pnpm pack
+
+      - name: Prepare ix repo
+        uses: actions/checkout@v3
+        with:
+          path: 'nightly_store_ix'
+          ref: 'ix'
+          token: ${{ secrets. NIGHTLY_STORE }}
+          fetch-depth: 0
+          persist-credentials: true
+
