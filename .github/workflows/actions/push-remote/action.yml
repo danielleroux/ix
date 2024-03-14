@@ -40,8 +40,8 @@ runs:
       shell: bash
       working-directory: nightly_store_${{ inputs.branch-name }}
       run: |
-        git ls-files -z | xargs -0 rm -rf
-        git ls-tree --name-only -d -r -z HEAD | sort -rz | xargs -0 rmdir
+        git ls-files -z | xargs -0 rm -rf || true
+        git ls-tree --name-only -d -r -z HEAD | sort -rz | xargs -0 rmdir || true
         mv ./package/* .
         rm -rf package
         git config --global user.name "ix builder [bot]"
