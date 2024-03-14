@@ -13,6 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Store commit id
+        id: gitcommit
+        shell: bash
+        run: |
+          echo "GIT_COMMIT_ID=$(git log -1 --pretty=%h)" >> "$GITHUB_OUTPUT"
+
       - name: Copy build files
         shell: bash
         run: |
@@ -43,6 +49,8 @@ jobs:
           tar -xvf $TAR_FILE -C $ROOT_PATH/nightly_store_ix
 
       - name: Debug
+        env:
+          GIT_COMMIT_ID: ${{ steps.gitcommit.outputs.GIT_COMMIT_ID }}
         shell: bash
         working-directory: nightly_store_ix
         run: |
@@ -53,5 +61,5 @@ jobs:
           git config --global user.name "ix builder [bot]"
           git config --global user.email "<>"
           git add -A
-          git commit -m "snapshot: some info and <date>"
+          git commit -m "Nightly build $(date +"%Y-%m-%d %T") - $GIT_COMMIT_ID"
           echo $(git log)
