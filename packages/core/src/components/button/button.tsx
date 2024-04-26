@@ -110,7 +110,7 @@ export class Button {
         }}
       >
         <BaseButton {...baseButtonProps}>
-          <slot></slot>
+          <slot></slot>x
         </BaseButton>
       </Host>
     );

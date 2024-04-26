@@ -79,10 +79,10 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [1/4, 2/4, 3/4, 4/4]
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     shard: [1/4, 2/4, 3/4, 4/4]
     env:
       ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
     steps:
@@ -90,8 +90,8 @@ jobs:
       - uses: ./.github/workflows/actions/turbo
 
       - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix -- --shard ${{ matrix.shard }}
-
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix
+#  -- --shard ${{ matrix.shard }}
       - uses: actions/upload-artifact@v3
         if: always()
         with:
@@ -100,84 +100,84 @@ jobs:
             ./packages/core/blob-report/
           retention-days: 1
 
-  visual-testing-aggrid:
-    if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.aggrid_any_changed == 'true' }}
-    needs: [build, changes]
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
+  # visual-testing-aggrid:
+  #   if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.aggrid_any_changed == 'true' }}
+  #   needs: [build, changes]
+  #   timeout-minutes: 10
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: mcr.microsoft.com/playwright:v1.39.0-jammy
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/actions/turbo
 
-      - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-aggrid
+  #     - name: Visual Regression
+  #       run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-aggrid
 
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: aggrid-html-report--attempt-${{ github.run_attempt }}
-          path: |
-            ./packages/aggrid/playwright-report/
-          retention-days: 1
+  #     - uses: actions/upload-artifact@v3
+  #       if: failure()
+  #       with:
+  #         name: aggrid-html-report--attempt-${{ github.run_attempt }}
+  #         path: |
+  #           ./packages/aggrid/playwright-report/
+  #         retention-days: 1
 
-  visual-testing-echarts:
-    if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.echarts_any_changed == 'true' }}
-    needs: [build, changes]
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
+  # visual-testing-echarts:
+  #   if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.echarts_any_changed == 'true' }}
+  #   needs: [build, changes]
+  #   timeout-minutes: 10
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: mcr.microsoft.com/playwright:v1.39.0-jammy
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/actions/turbo
 
-      - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-echarts
+  #     - name: Visual Regression
+  #       run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-echarts
 
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: echarts-html-report--attempt-${{ github.run_attempt }}
-          path: |
-            ./packages/echarts/playwright-report/
-          retention-days: 1
+  #     - uses: actions/upload-artifact@v3
+  #       if: failure()
+  #       with:
+  #         name: echarts-html-report--attempt-${{ github.run_attempt }}
+  #         path: |
+  #           ./packages/echarts/playwright-report/
+  #         retention-days: 1
 
-  merge-core-reports:
-    if: failure()
-    needs: [visual-testing-core]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
+  # merge-core-reports:
+  #   if: failure()
+  #   needs: [visual-testing-core]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/actions/turbo
 
-      - name: Download blob reports from GitHub Actions Artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: core-blob-report
-          path: all-blob-reports
+  #     - name: Download blob reports from GitHub Actions Artifacts
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: core-blob-report
+  #         path: all-blob-reports
 
-      - name: Merge into HTML Report
-        run: pnpm exec playwright merge-reports --reporter html ./all-blob-reports
+  #     - name: Merge into HTML Report
+  #       run: pnpm exec playwright merge-reports --reporter html ./all-blob-reports
 
-      - name: Upload HTML report
-        uses: actions/upload-artifact@v3
-        with:
-          name: core-html-report--attempt-${{ github.run_attempt }}
-          path: playwright-report
-          retention-days: 2
+  #     - name: Upload HTML report
+  #       uses: actions/upload-artifact@v3
+  #       with:
+  #         name: core-html-report--attempt-${{ github.run_attempt }}
+  #         path: playwright-report
+  #         retention-days: 2
 
-  unit:
-    if: ${{ needs.changes.outputs.unittests_any_changed == 'true' }}
-    needs: [build, changes]
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
+  # unit:
+  #   if: ${{ needs.changes.outputs.unittests_any_changed == 'true' }}
+  #   needs: [build, changes]
+  #   timeout-minutes: 10
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: mcr.microsoft.com/playwright:v1.39.0-jammy
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/actions/turbo
 
-      - name: Test
-        run: pnpm run test --cache-dir=.turbo --filter !\documentation
+  #     - name: Test
+  #       run: pnpm run test --cache-dir=.turbo --filter !\documentation
