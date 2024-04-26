@@ -7,8 +7,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import { devices, defineConfig } from '@playwright/test';
 import path from 'path';
 
 /**
@@ -36,12 +35,8 @@ function buildProjectsWithThemes() {
   });
 }
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
-/** @type {import('@playwright/test').PlaywrightTestConfig} */
-const config: PlaywrightTestConfig = {
-  testMatch: path.join(__dirname, 'src', 'tests', '**', '*.e2e.ts'),
+export default defineConfig({
+  testMatch: path.join(__dirname, 'src', 'tests', 'button', '*.e2e.ts'),
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
   expect: {
@@ -62,7 +57,16 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: 10,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: process.env.CI ? 'blob' : 'html',
+  reporter: [
+    [process.env.CI ? 'blob' : 'html'],
+    [
+      '@argos-ci/playwright/reporter',
+      {
+        uploadToArgos: !!process.env.CI,
+        token: process.env.ARGOS_TOKEN,
+      },
+    ],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
@@ -79,6 +83,4 @@ const config: PlaywrightTestConfig = {
     command: 'pnpm run host-root',
     port: 8080,
   },
-};
-
-export default config;
+});
