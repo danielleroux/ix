@@ -7,7 +7,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices, defineConfig } from '@playwright/test';
 import path from 'path';
 
