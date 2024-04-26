@@ -8,7 +8,7 @@
  */
 
 import type { PlaywrightTestConfig } from '@playwright/test';
-import { devices } from '@playwright/test';
+import { devices, defineConfig } from '@playwright/test';
 import path from 'path';
 
 /**
@@ -36,11 +36,7 @@ function buildProjectsWithThemes() {
   });
 }
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
-/** @type {import('@playwright/test').PlaywrightTestConfig} */
-const config: PlaywrightTestConfig = {
+export default defineConfig({
   testMatch: path.join(__dirname, 'src', 'tests', 'button', '*.e2e.ts'),
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
@@ -63,14 +59,11 @@ const config: PlaywrightTestConfig = {
   workers: 10,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    process.env.CI ? 'blob' : 'html',
+    [process.env.CI ? 'blob' : 'html'],
     [
       '@argos-ci/playwright/reporter',
       {
-        // Upload to Argos on CI only.
         uploadToArgos: !!process.env.CI,
-
-        // Set your Argos token (required if not using GitHub Actions).
         token: process.env.ARGOS_TOKEN,
       },
     ],
@@ -91,6 +84,4 @@ const config: PlaywrightTestConfig = {
     command: 'pnpm run host-root',
     port: 8080,
   },
-};
-
-export default config;
+});
