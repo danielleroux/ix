@@ -9,11 +9,13 @@
 
 import { expect } from '@playwright/test';
 import { regressionTest } from '@utils/test';
+import { argosScreenshot } from '@argos-ci/playwright';
 
 regressionTest.describe('button: basic', () => {
   regressionTest('should show loading spinner', async ({ page }) => {
     await page.goto('button/loading');
-    expect(await page.screenshot({ animations: 'disabled' })).toMatchSnapshot();
+    // expect(await page.screenshot({ animations: 'disabled' })).toMatchSnapshot();
+    await argosScreenshot(page, 'button-loading');
   });
 
   regressionTest('should not have visual regressions', async ({ page }) => {
