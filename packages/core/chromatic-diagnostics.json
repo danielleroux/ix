@@ -1,0 +1,808 @@
+{
+  "activity": {},
+  "announcedBuild": {
+    "id": "6638e0b107d18954d416d190",
+    "number": 11,
+    "status": "PUBLISHED",
+    "autoAcceptChanges": false,
+    "app": {
+      "id": "6638bcc4b937e4088609ca12",
+      "turboSnapAvailability": "UNAVAILABLE"
+    },
+    "storybookUrl": "https://6638bcc4b937e4088609ca12-hlccfvcjee.chromatic.com/"
+  },
+  "build": {
+    "id": "6638e0b107d18954d416d190",
+    "number": 11,
+    "status": "PASSED",
+    "autoAcceptChanges": false,
+    "app": {
+      "manageUrl": "https://www.chromatic.com/manage?appId=6638bcc4b937e4088609ca12",
+      "setupUrl": "https://www.chromatic.com/setup?appId=6638bcc4b937e4088609ca12",
+      "account": {
+        "exceededThreshold": false,
+        "paymentRequired": false,
+        "billingUrl": "https://www.chromatic.com/billing?accountId=6638bbc6e4e076ec4e149052"
+      },
+      "repository": {
+        "provider": "github"
+      }
+    },
+    "storybookUrl": "https://6638bcc4b937e4088609ca12-hlccfvcjee.chromatic.com/",
+    "specCount": 1,
+    "componentCount": 1,
+    "testCount": 1,
+    "changeCount": 0,
+    "errorCount": 0,
+    "actualTestCount": 1,
+    "actualCaptureCount": 1,
+    "inheritedCaptureCount": 0,
+    "interactionTestFailuresCount": 0,
+    "webUrl": "https://www.chromatic.com/build?appId=6638bcc4b937e4088609ca12&number=11",
+    "browsers": [
+      {
+        "browser": "chrome"
+      }
+    ],
+    "features": {
+      "uiTests": true,
+      "uiReview": true
+    },
+    "turboSnapEnabled": null,
+    "wasLimited": false,
+    "tests": [
+      {
+        "spec": {
+          "name": "Snapshot #1",
+          "component": {
+            "name": "src/tests/blind/blind.e2e/blind/basic",
+            "displayName": "basic"
+          }
+        },
+        "parameters": {
+          "viewport": 1280,
+          "viewportIsDefault": false
+        },
+        "mode": {
+          "name": "w1280h720"
+        }
+      }
+    ],
+    "inProgressCount": 0,
+    "completedAt": 1715003585641
+  },
+  "buildCommand": "node /Users/daniel/dev/oss/playground/danielleroux-ix/node_modules/.pnpm/@chromatic-com+playwright@0.6.6_@babel+preset-env@7.23.2_@babel+core@7.23.7__@playwright+test_jqq3z744p6l2ezftg6ysofojoi/node_modules/@chromatic-com/playwright/dist/bin/build-archive-storybook.js --output-dir /var/folders/p7/750dzrd135dd27b087wrzw5w0000gn/T/chromatic--86445-oqHWAYu9zMv3",
+  "buildLogFile": "/Users/daniel/dev/oss/playground/danielleroux-ix/packages/core/build-storybook.log",
+  "configuration": {},
+  "environment": {},
+  "exitCode": 0,
+  "exitCodeKey": "OK",
+  "fileInfo": {
+    "lengths": [
+      {
+        "pathname": "115.2129d414.iframe.bundle.js",
+        "contentLength": 1034219,
+        "knownAs": "115.2129d414.iframe.bundle.js"
+      },
+      {
+        "pathname": "115.2129d414.iframe.bundle.js.LICENSE.txt",
+        "contentLength": 1423,
+        "knownAs": "115.2129d414.iframe.bundle.js.LICENSE.txt"
+      },
+      {
+        "pathname": "115.2129d414.iframe.bundle.js.map",
+        "contentLength": 363040,
+        "knownAs": "115.2129d414.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "216.fac98ec0.iframe.bundle.js",
+        "contentLength": 1178,
+        "knownAs": "216.fac98ec0.iframe.bundle.js"
+      },
+      {
+        "pathname": "278.b0f322c5.iframe.bundle.js",
+        "contentLength": 41272,
+        "knownAs": "278.b0f322c5.iframe.bundle.js"
+      },
+      {
+        "pathname": "349.869e3f2c.iframe.bundle.js",
+        "contentLength": 995,
+        "knownAs": "349.869e3f2c.iframe.bundle.js"
+      },
+      {
+        "pathname": "411.b3cefeb8.iframe.bundle.js",
+        "contentLength": 520,
+        "knownAs": "411.b3cefeb8.iframe.bundle.js"
+      },
+      {
+        "pathname": "461.a9344f5b.iframe.bundle.js",
+        "contentLength": 62545,
+        "knownAs": "461.a9344f5b.iframe.bundle.js"
+      },
+      {
+        "pathname": "461.a9344f5b.iframe.bundle.js.map",
+        "contentLength": 17919,
+        "knownAs": "461.a9344f5b.iframe.bundle.js.map"
+      },
+      {
+        "pathname": "497.c1376d59.iframe.bundle.js",
+        "contentLength": 900,
+        "knownAs": "497.c1376d59.iframe.bundle.js"
+      },
+      {
+        "pathname": "556.42214e2b.iframe.bundle.js",
+        "contentLength": 216975,
+        "knownAs": "556.42214e2b.iframe.bundle.js"
+      },
+      {
+        "pathname": "favicon.svg",
+        "contentLength": 1292,
+        "knownAs": "favicon.svg"
+      },
+      {
+        "pathname": "iframe.html",
+        "contentLength": 12330,
+        "knownAs": "iframe.html"
+      },
+      {
+        "pathname": "index.html",
+        "contentLength": 4290,
+        "knownAs": "index.html"
+      },
+      {
+        "pathname": "index.json",
+        "contentLength": 332,
+        "knownAs": "index.json"
+      },
+      {
+        "pathname": "main.c5227d75.iframe.bundle.js",
+        "contentLength": 5668,
+        "knownAs": "main.c5227d75.iframe.bundle.js"
+      },
+      {
+        "pathname": "project.json",
+        "contentLength": 692,
+        "knownAs": "project.json"
+      },
+      {
+        "pathname": "runtime~main.61b5d9d0.iframe.bundle.js",
+        "contentLength": 6445,
+        "knownAs": "runtime~main.61b5d9d0.iframe.bundle.js"
+      },
+      {
+        "pathname": "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js",
+        "contentLength": 1936,
+        "knownAs": "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js",
+        "contentLength": 1936,
+        "knownAs": "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/essentials-actions-2/manager-bundle.js",
+        "contentLength": 40685,
+        "knownAs": "sb-addons/essentials-actions-2/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/essentials-actions-2/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/essentials-actions-2/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/essentials-backgrounds-3/manager-bundle.js",
+        "contentLength": 13406,
+        "knownAs": "sb-addons/essentials-backgrounds-3/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/essentials-backgrounds-3/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/essentials-backgrounds-3/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/essentials-controls-1/manager-bundle.js",
+        "contentLength": 353748,
+        "knownAs": "sb-addons/essentials-controls-1/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/essentials-controls-1/manager-bundle.js.LEGAL.txt",
+        "contentLength": 631,
+        "knownAs": "sb-addons/essentials-controls-1/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/essentials-measure-6/manager-bundle.js",
+        "contentLength": 6138,
+        "knownAs": "sb-addons/essentials-measure-6/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/essentials-measure-6/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/essentials-measure-6/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/essentials-outline-7/manager-bundle.js",
+        "contentLength": 6180,
+        "knownAs": "sb-addons/essentials-outline-7/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/essentials-outline-7/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/essentials-outline-7/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/essentials-toolbars-5/manager-bundle.js",
+        "contentLength": 5092,
+        "knownAs": "sb-addons/essentials-toolbars-5/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/essentials-toolbars-5/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/essentials-toolbars-5/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/essentials-viewport-4/manager-bundle.js",
+        "contentLength": 13682,
+        "knownAs": "sb-addons/essentials-viewport-4/manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/essentials-viewport-4/manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/essentials-viewport-4/manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js",
+        "contentLength": 2847,
+        "knownAs": "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js"
+      },
+      {
+        "pathname": "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js.LEGAL.txt",
+        "contentLength": 0,
+        "knownAs": "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js.LEGAL.txt"
+      },
+      {
+        "pathname": "sb-common-assets/fonts.css",
+        "contentLength": 675,
+        "knownAs": "sb-common-assets/fonts.css"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-bold-italic.woff2",
+        "contentLength": 49460,
+        "knownAs": "sb-common-assets/nunito-sans-bold-italic.woff2"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-bold.woff2",
+        "contentLength": 47144,
+        "knownAs": "sb-common-assets/nunito-sans-bold.woff2"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-italic.woff2",
+        "contentLength": 49620,
+        "knownAs": "sb-common-assets/nunito-sans-italic.woff2"
+      },
+      {
+        "pathname": "sb-common-assets/nunito-sans-regular.woff2",
+        "contentLength": 47072,
+        "knownAs": "sb-common-assets/nunito-sans-regular.woff2"
+      },
+      {
+        "pathname": "sb-manager/WithTooltip-Y7J54OF7-CEHQ77YF.js",
+        "contentLength": 196,
+        "knownAs": "sb-manager/WithTooltip-Y7J54OF7-CEHQ77YF.js"
+      },
+      {
+        "pathname": "sb-manager/chunk-E3WK6ZOZ.js",
+        "contentLength": 581865,
+        "knownAs": "sb-manager/chunk-E3WK6ZOZ.js"
+      },
+      {
+        "pathname": "sb-manager/chunk-E6ABNH5R.js",
+        "contentLength": 336904,
+        "knownAs": "sb-manager/chunk-E6ABNH5R.js"
+      },
+      {
+        "pathname": "sb-manager/chunk-FEE35O7J.js",
+        "contentLength": 58229,
+        "knownAs": "sb-manager/chunk-FEE35O7J.js"
+      },
+      {
+        "pathname": "sb-manager/chunk-S4VOIVUE.js",
+        "contentLength": 718650,
+        "knownAs": "sb-manager/chunk-S4VOIVUE.js"
+      },
+      {
+        "pathname": "sb-manager/chunk-XCO5HRLK.js",
+        "contentLength": 147212,
+        "knownAs": "sb-manager/chunk-XCO5HRLK.js"
+      },
+      {
+        "pathname": "sb-manager/chunk-XP3HGWTR.js",
+        "contentLength": 6839,
+        "knownAs": "sb-manager/chunk-XP3HGWTR.js"
+      },
+      {
+        "pathname": "sb-manager/formatter-B5HCVTEV-7DCBOGO6.js",
+        "contentLength": 224076,
+        "knownAs": "sb-manager/formatter-B5HCVTEV-7DCBOGO6.js"
+      },
+      {
+        "pathname": "sb-manager/globals-module-info.js",
+        "contentLength": 8859,
+        "knownAs": "sb-manager/globals-module-info.js"
+      },
+      {
+        "pathname": "sb-manager/globals-runtime.js",
+        "contentLength": 7305,
+        "knownAs": "sb-manager/globals-runtime.js"
+      },
+      {
+        "pathname": "sb-manager/globals.js",
+        "contentLength": 1529,
+        "knownAs": "sb-manager/globals.js"
+      },
+      {
+        "pathname": "sb-manager/index.js",
+        "contentLength": 246,
+        "knownAs": "sb-manager/index.js"
+      },
+      {
+        "pathname": "sb-manager/runtime.js",
+        "contentLength": 778,
+        "knownAs": "sb-manager/runtime.js"
+      },
+      {
+        "pathname": "sb-manager/syntaxhighlighter-JOJW2KGS-VF6EEVPI.js",
+        "contentLength": 318,
+        "knownAs": "sb-manager/syntaxhighlighter-JOJW2KGS-VF6EEVPI.js"
+      },
+      {
+        "pathname": "sb-preview/globals.js",
+        "contentLength": 1416,
+        "knownAs": "sb-preview/globals.js"
+      },
+      {
+        "pathname": "sb-preview/runtime.js",
+        "contentLength": 329339,
+        "knownAs": "sb-preview/runtime.js"
+      },
+      {
+        "pathname": "src/tests/blind/basic/index.html",
+        "contentLength": 2158,
+        "knownAs": "src/tests/blind/basic/index.html"
+      },
+      {
+        "pathname": "src-tests-blind-blind-e2e-blind-basic-snapshot-1.w1280h720.snapshot.json",
+        "contentLength": 485005,
+        "knownAs": "src-tests-blind-blind-e2e-blind-basic-snapshot-1.w1280h720.snapshot.json"
+      },
+      {
+        "pathname": "src-tests-blind-blind-e2e-blind-basic-stories.375aff7d.iframe.bundle.js",
+        "contentLength": 763,
+        "knownAs": "src-tests-blind-blind-e2e-blind-basic-stories.375aff7d.iframe.bundle.js"
+      },
+      {
+        "pathname": "www/build/p-16826ff7.js",
+        "contentLength": 188,
+        "knownAs": "www/build/p-16826ff7.js"
+      },
+      {
+        "pathname": "www/build/p-16d378f3.js",
+        "contentLength": 1147,
+        "knownAs": "www/build/p-16d378f3.js"
+      },
+      {
+        "pathname": "www/build/p-1ad7fd83.entry.js",
+        "contentLength": 32580,
+        "knownAs": "www/build/p-1ad7fd83.entry.js"
+      },
+      {
+        "pathname": "www/build/p-26e9d40e.js",
+        "contentLength": 16770,
+        "knownAs": "www/build/p-26e9d40e.js"
+      },
+      {
+        "pathname": "www/build/p-330343e7.entry.js",
+        "contentLength": 15171,
+        "knownAs": "www/build/p-330343e7.entry.js"
+      },
+      {
+        "pathname": "www/build/p-4f8ac3bf.js",
+        "contentLength": 1751,
+        "knownAs": "www/build/p-4f8ac3bf.js"
+      },
+      {
+        "pathname": "www/build/p-71206084.js",
+        "contentLength": 19150,
+        "knownAs": "www/build/p-71206084.js"
+      },
+      {
+        "pathname": "www/build/p-7702a8c2.js",
+        "contentLength": 391,
+        "knownAs": "www/build/p-7702a8c2.js"
+      },
+      {
+        "pathname": "www/build/p-84430d2c.js",
+        "contentLength": 11368,
+        "knownAs": "www/build/p-84430d2c.js"
+      },
+      {
+        "pathname": "www/build/p-a4e489ea.js",
+        "contentLength": 966155,
+        "knownAs": "www/build/p-a4e489ea.js"
+      },
+      {
+        "pathname": "www/build/p-c4d3f089.entry.js",
+        "contentLength": 13777,
+        "knownAs": "www/build/p-c4d3f089.entry.js"
+      },
+      {
+        "pathname": "www/build/siemens-ix.css",
+        "contentLength": 450436,
+        "knownAs": "www/build/siemens-ix.css"
+      },
+      {
+        "pathname": "www/build/siemens-ix.esm.js",
+        "contentLength": 21072,
+        "knownAs": "www/build/siemens-ix.esm.js"
+      }
+    ],
+    "paths": [
+      "115.2129d414.iframe.bundle.js",
+      "115.2129d414.iframe.bundle.js.LICENSE.txt",
+      "115.2129d414.iframe.bundle.js.map",
+      "216.fac98ec0.iframe.bundle.js",
+      "278.b0f322c5.iframe.bundle.js",
+      "349.869e3f2c.iframe.bundle.js",
+      "411.b3cefeb8.iframe.bundle.js",
+      "461.a9344f5b.iframe.bundle.js",
+      "461.a9344f5b.iframe.bundle.js.map",
+      "497.c1376d59.iframe.bundle.js",
+      "556.42214e2b.iframe.bundle.js",
+      "favicon.svg",
+      "iframe.html",
+      "index.html",
+      "index.json",
+      "main.c5227d75.iframe.bundle.js",
+      "project.json",
+      "runtime~main.61b5d9d0.iframe.bundle.js",
+      "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js",
+      "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js.LEGAL.txt",
+      "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js",
+      "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js.LEGAL.txt",
+      "sb-addons/essentials-actions-2/manager-bundle.js",
+      "sb-addons/essentials-actions-2/manager-bundle.js.LEGAL.txt",
+      "sb-addons/essentials-backgrounds-3/manager-bundle.js",
+      "sb-addons/essentials-backgrounds-3/manager-bundle.js.LEGAL.txt",
+      "sb-addons/essentials-controls-1/manager-bundle.js",
+      "sb-addons/essentials-controls-1/manager-bundle.js.LEGAL.txt",
+      "sb-addons/essentials-measure-6/manager-bundle.js",
+      "sb-addons/essentials-measure-6/manager-bundle.js.LEGAL.txt",
+      "sb-addons/essentials-outline-7/manager-bundle.js",
+      "sb-addons/essentials-outline-7/manager-bundle.js.LEGAL.txt",
+      "sb-addons/essentials-toolbars-5/manager-bundle.js",
+      "sb-addons/essentials-toolbars-5/manager-bundle.js.LEGAL.txt",
+      "sb-addons/essentials-viewport-4/manager-bundle.js",
+      "sb-addons/essentials-viewport-4/manager-bundle.js.LEGAL.txt",
+      "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js",
+      "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js.LEGAL.txt",
+      "sb-common-assets/fonts.css",
+      "sb-common-assets/nunito-sans-bold-italic.woff2",
+      "sb-common-assets/nunito-sans-bold.woff2",
+      "sb-common-assets/nunito-sans-italic.woff2",
+      "sb-common-assets/nunito-sans-regular.woff2",
+      "sb-manager/WithTooltip-Y7J54OF7-CEHQ77YF.js",
+      "sb-manager/chunk-E3WK6ZOZ.js",
+      "sb-manager/chunk-E6ABNH5R.js",
+      "sb-manager/chunk-FEE35O7J.js",
+      "sb-manager/chunk-S4VOIVUE.js",
+      "sb-manager/chunk-XCO5HRLK.js",
+      "sb-manager/chunk-XP3HGWTR.js",
+      "sb-manager/formatter-B5HCVTEV-7DCBOGO6.js",
+      "sb-manager/globals-module-info.js",
+      "sb-manager/globals-runtime.js",
+      "sb-manager/globals.js",
+      "sb-manager/index.js",
+      "sb-manager/runtime.js",
+      "sb-manager/syntaxhighlighter-JOJW2KGS-VF6EEVPI.js",
+      "sb-preview/globals.js",
+      "sb-preview/runtime.js",
+      "src/tests/blind/basic/index.html",
+      "src-tests-blind-blind-e2e-blind-basic-snapshot-1.w1280h720.snapshot.json",
+      "src-tests-blind-blind-e2e-blind-basic-stories.375aff7d.iframe.bundle.js",
+      "www/build/p-16826ff7.js",
+      "www/build/p-16d378f3.js",
+      "www/build/p-1ad7fd83.entry.js",
+      "www/build/p-26e9d40e.js",
+      "www/build/p-330343e7.entry.js",
+      "www/build/p-4f8ac3bf.js",
+      "www/build/p-71206084.js",
+      "www/build/p-7702a8c2.js",
+      "www/build/p-84430d2c.js",
+      "www/build/p-a4e489ea.js",
+      "www/build/p-c4d3f089.entry.js",
+      "www/build/siemens-ix.css",
+      "www/build/siemens-ix.esm.js"
+    ],
+    "total": 6873930,
+    "hashes": {
+      "115.2129d414.iframe.bundle.js": "d40bb227e274dedd",
+      "115.2129d414.iframe.bundle.js.LICENSE.txt": "0a3352c3547ed9f8",
+      "115.2129d414.iframe.bundle.js.map": "00ae5a0ff5522e49",
+      "216.fac98ec0.iframe.bundle.js": "6bdb95fd89351195",
+      "278.b0f322c5.iframe.bundle.js": "67e93844c39169f9",
+      "349.869e3f2c.iframe.bundle.js": "680929f2127c2423",
+      "411.b3cefeb8.iframe.bundle.js": "9d30a3dafdabf453",
+      "461.a9344f5b.iframe.bundle.js": "af36354c7773e33d",
+      "461.a9344f5b.iframe.bundle.js.map": "e8b97f0f640a0f78",
+      "497.c1376d59.iframe.bundle.js": "2dcce652913a8d63",
+      "556.42214e2b.iframe.bundle.js": "eedf30972c127796",
+      "favicon.svg": "c838c315c746b6e6",
+      "iframe.html": "d62e453bbd0709d3",
+      "index.html": "2bc7975fdea1cc3e",
+      "index.json": "b4a84a87f9253bf1",
+      "main.c5227d75.iframe.bundle.js": "54b8f0bbd4bdda80",
+      "project.json": "d8668f53e1b136e1",
+      "runtime~main.61b5d9d0.iframe.bundle.js": "ff279ae924e85198",
+      "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js": "9e83ab80bf800cea",
+      "sb-addons/chromatic-com-playwright-storybook-config-8/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js": "9e83ab80bf800cea",
+      "sb-addons/chromatic-com-playwright-storybook-config-9/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/essentials-actions-2/manager-bundle.js": "057f22612f052866",
+      "sb-addons/essentials-actions-2/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/essentials-backgrounds-3/manager-bundle.js": "d42d8f73adcb2c4b",
+      "sb-addons/essentials-backgrounds-3/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/essentials-controls-1/manager-bundle.js": "85cbd5e235777a5a",
+      "sb-addons/essentials-controls-1/manager-bundle.js.LEGAL.txt": "8a8b3af0e390b5bc",
+      "sb-addons/essentials-measure-6/manager-bundle.js": "b1db4e0520dde3e1",
+      "sb-addons/essentials-measure-6/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/essentials-outline-7/manager-bundle.js": "1d42514969a676bd",
+      "sb-addons/essentials-outline-7/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/essentials-toolbars-5/manager-bundle.js": "962d976f9cf6762b",
+      "sb-addons/essentials-toolbars-5/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/essentials-viewport-4/manager-bundle.js": "43f0a8e4ce978e74",
+      "sb-addons/essentials-viewport-4/manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js": "0b38789da7fb99d3",
+      "sb-addons/storybook-core-server-presets-0/common-manager-bundle.js.LEGAL.txt": "ef46db3751d8e999",
+      "sb-common-assets/fonts.css": "5fe607dcb520f0b7",
+      "sb-common-assets/nunito-sans-bold-italic.woff2": "d64464b3594b3fb9",
+      "sb-common-assets/nunito-sans-bold.woff2": "0bd5b61b7fb7f7d5",
+      "sb-common-assets/nunito-sans-italic.woff2": "b7807d9de055e9a0",
+      "sb-common-assets/nunito-sans-regular.woff2": "6687b7be04c2debe",
+      "sb-manager/WithTooltip-Y7J54OF7-CEHQ77YF.js": "1fd2940942007c28",
+      "sb-manager/chunk-E3WK6ZOZ.js": "ac0d1f115f6b9a04",
+      "sb-manager/chunk-E6ABNH5R.js": "6beed07aacbdb9cc",
+      "sb-manager/chunk-FEE35O7J.js": "0f94bc2ff556bed1",
+      "sb-manager/chunk-S4VOIVUE.js": "4bede8ef9b4fc8ae",
+      "sb-manager/chunk-XCO5HRLK.js": "d1dc14cf0655d990",
+      "sb-manager/chunk-XP3HGWTR.js": "c4434b2c5239ca5b",
+      "sb-manager/formatter-B5HCVTEV-7DCBOGO6.js": "13a51a1a2f69a5a1",
+      "sb-manager/globals-module-info.js": "680c797eefa8e456",
+      "sb-manager/globals-runtime.js": "8cb57d286577c404",
+      "sb-manager/globals.js": "6f03e9a7e34d0329",
+      "sb-manager/index.js": "dc17dbb182f6cc65",
+      "sb-manager/runtime.js": "726849022402a37f",
+      "sb-manager/syntaxhighlighter-JOJW2KGS-VF6EEVPI.js": "7ee9fc5105d62011",
+      "sb-preview/globals.js": "88d9682d5fa2647b",
+      "sb-preview/runtime.js": "93471ffab5f19b9c",
+      "src/tests/blind/basic/index.html": "bd569c5de8c9642f",
+      "src-tests-blind-blind-e2e-blind-basic-snapshot-1.w1280h720.snapshot.json": "f6b9a4e2e11eac29",
+      "src-tests-blind-blind-e2e-blind-basic-stories.375aff7d.iframe.bundle.js": "6fe024056dce5408",
+      "www/build/p-16826ff7.js": "08f9a5004d6b1313",
+      "www/build/p-16d378f3.js": "a5ed3b555554c148",
+      "www/build/p-1ad7fd83.entry.js": "7bfb4ca28df4808f",
+      "www/build/p-26e9d40e.js": "3f6dfdfe0dcdeed4",
+      "www/build/p-330343e7.entry.js": "be924612cba65393",
+      "www/build/p-4f8ac3bf.js": "cda53ff73b8391ad",
+      "www/build/p-71206084.js": "e8dd11181e6ef5b9",
+      "www/build/p-7702a8c2.js": "92e606606a15042f",
+      "www/build/p-84430d2c.js": "efe928dad97cac2b",
+      "www/build/p-a4e489ea.js": "2cc03fe680cfd2c5",
+      "www/build/p-c4d3f089.entry.js": "59048139bb48380e",
+      "www/build/siemens-ix.css": "57146a1a0764bd81",
+      "www/build/siemens-ix.esm.js": "329fa2cf44ce1163"
+    }
+  },
+  "flags": {
+    "playwright": true,
+    "debug": true,
+    "forceRebuild": "",
+    "outputDir": [],
+    "storybookBuildDir": [],
+    "externals": [],
+    "onlyStoryFiles": [],
+    "onlyStoryNames": [],
+    "untraced": [],
+    "fileHashing": true,
+    "interactive": true,
+    "appCode": []
+  },
+  "git": {
+    "version": "2.39.3 (Apple Git-146)",
+    "gitUserEmail": "daniel.leroux@siemens.com",
+    "uncommittedHash": "fatal: could not open 'chromatic-diagnostics.json' for reading: No such file or directory\n5832d6715c7c5f1215e3c506205c8fd03181e6e3",
+    "commit": "fd421100831489cb78f4ef28afce98f092693881",
+    "committedAt": 1714646131000,
+    "committerEmail": "daniel.leroux@siemens.com",
+    "committerName": "Daniel Leroux",
+    "branch": "main",
+    "slug": "danielleroux/ix",
+    "fromCI": false,
+    "parentCommits": [
+      "fd421100831489cb78f4ef28afce98f092693881"
+    ]
+  },
+  "input": [],
+  "isOnboarding": false,
+  "isPublishOnly": false,
+  "options": {
+    "fromCI": false,
+    "inAction": false,
+    "dryRun": false,
+    "debug": true,
+    "autoAcceptChanges": false,
+    "exitZeroOnChanges": false,
+    "exitOnceUploaded": false,
+    "diagnosticsFile": "chromatic-diagnostics.json",
+    "fileHashing": true,
+    "interactive": false,
+    "isLocalBuild": false,
+    "originalArgv": [
+      "--playwright",
+      "--project-token=chpt_6db934250980305",
+      "--debug",
+      "--force-rebuild"
+    ],
+    "logFile": "chromatic.log",
+    "forceRebuild": true,
+    "playwright": true,
+    "storybookLogFile": "build-storybook.log",
+    "branchName": ""
+  },
+  "packageJson": {
+    "name": "@siemens/ix",
+    "homepage": "https://ix.siemens.io",
+    "bugs": {
+      "url": "https://github.com/siemens/ix/issues"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/siemens/ix.git",
+      "directory": "packages/core"
+    },
+    "version": "2.2.1",
+    "license": "MIT",
+    "description": "Siemens iX Web Components",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.js",
+    "es2015": "dist/esm/index.mjs",
+    "es2017": "dist/esm/index.mjs",
+    "types": "dist/types/interfaces.d.ts",
+    "collection": "dist/collection/collection-manifest.json",
+    "collection:main": "dist/collection/index.js",
+    "unpkg": "dist/siemens-ix/siemens-ix.esm.js",
+    "files": [
+      "LICENSE",
+      "README.md",
+      "components/",
+      "dist/",
+      "loader/",
+      "scss/"
+    ],
+    "scripts": {
+      "build": "stencil build --prod && npm run build:scss",
+      "build:scss": "ts-node -P ./scripts/build/tsconfig.json ./scripts/build/build-css.ts",
+      "build:dev": "stencil build",
+      "lint": "eslint src/**/*{.ts,.tsx}",
+      "start": "stencil build --dev --watch --serve",
+      "dev": "stencil build --watch",
+      "test": "npm run test:spec && npm run test:ct",
+      "test:spec": "stencil test --spec",
+      "test:ct": "playwright test --config playwright-ct.config.ts --reporter list",
+      "visual-regression": "playwright test",
+      "host-root": "http-server ./ -a 127.0.0.1 -p 8080 -c-1",
+      "generate": "stencil generate",
+      "pkg": "pnpm pack"
+    },
+    "dependencies": {
+      "@floating-ui/dom": "^1.5.1",
+      "@stencil/core": "^4.13.0",
+      "@types/luxon": "^3.3.7",
+      "animejs": "~3.2.1",
+      "hyperlist": "^1.0.0",
+      "luxon": "^3.4.4"
+    },
+    "devDependencies": {
+      "@chromatic-com/playwright": "^0.6.6",
+      "@playwright/test": "^1.32.1",
+      "@siemens/ix-icons": "^2.0.0",
+      "@stencil-community/eslint-plugin": "^0.7.1",
+      "@stencil-community/postcss": "^2.2.0",
+      "@stencil/angular-output-target": "^0.8.3",
+      "@stencil/react-output-target": "^0.5.3",
+      "@stencil/sass": "^3.0.8",
+      "@stencil/vue-output-target": "^0.8.7",
+      "@testing-library/dom": "^8.11.0",
+      "@testing-library/jest-dom": "^5.16.5",
+      "@types/animejs": "^3.1.4",
+      "@types/jest": "^29.5.6",
+      "@types/mustache": "^4.1.1",
+      "@types/node": "^16.18.11",
+      "@typescript-eslint/eslint-plugin": "^6.14.0",
+      "@typescript-eslint/parser": "^6.14.0",
+      "animate.css": "~4.1.1",
+      "autoprefixer": "10.4.5",
+      "bootstrap": "^5.2.0",
+      "chromatic": "^11.3.0",
+      "cssnano": "^6.0.1",
+      "cz-conventional-changelog": "^3.3.0",
+      "eslint": "^8.56.0",
+      "eslint-config-ix": "workspace:*",
+      "eslint-plugin-react": "^7.33.2",
+      "fs-extra": "^10.0.0",
+      "http-server": "^14.1.1",
+      "jest": "^29.7.0",
+      "jest-cli": "^29.7.0",
+      "mustache": "^4.2.0",
+      "postcss": "^8.4.29",
+      "puppeteer": "21.1.1",
+      "rimraf": "^5.0.5",
+      "sass": "^1.58.3",
+      "start-server-and-test": "^1.14.0",
+      "ts-node": "^10.0.0",
+      "typescript": "^5.3.3"
+    },
+    "peerDependencies": {
+      "@popperjs/core": "^2.11.0",
+      "@siemens/ix-icons": "^2.0.0",
+      "bootstrap": "~5.2.0"
+    },
+    "config": {
+      "commitizen": {
+        "path": "./node_modules/cz-conventional-changelog"
+      }
+    },
+    "readme": "ERROR: No README data found!",
+    "_id": "@siemens/ix@2.2.1"
+  },
+  "packagePath": "/Users/daniel/dev/oss/playground/danielleroux-ix/packages/core/package.json",
+  "rebuildForBuildId": "6638dea4b9e4e01f0bcb032a",
+  "runtimeMetadata": {
+    "nodePlatform": "darwin",
+    "nodeVersion": "20.11.0",
+    "packageManager": "pnpm",
+    "packageManagerVersion": "9.0.6"
+  },
+  "sentinelUrls": [
+    "https://chromatic-builds.s3.us-west-2.amazonaws.com/6638bcc4b937e4088609ca12-hlccfvcjee/.chromatic/files-copied.588572648.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAJVVEQEOBEEPXSNNQ%2F20240506%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20240506T135255Z&X-Amz-Expires=1800&X-Amz-Signature=57ff26dedd7bd2e3bb3baf430dd2690cf6954fa224f99754e042b49ff5b83b12&X-Amz-SignedHeaders=host&x-id=GetObject"
+  ],
+  "sessionId": "6342fe4e-3c20-41e5-b4a1-4a3d5dde8fa9",
+  "sourceDir": "/var/folders/p7/750dzrd135dd27b087wrzw5w0000gn/T/chromatic--86445-oqHWAYu9zMv3",
+  "startedAt": 1715003580843,
+  "storybook": {
+    "addons": [
+      {
+        "name": "unknown",
+        "packageName": "unknown",
+        "packageVersion": "0"
+      }
+    ],
+    "builder": {
+      "name": "unknown",
+      "packageVersion": "0"
+    }
+  },
+  "storybookUrl": "https://6638bcc4b937e4088609ca12-hlccfvcjee.chromatic.com/",
+  "task": "snapshot",
+  "uploadedBytes": 692,
+  "uploadedFiles": 1,
+  "userError": false
+}

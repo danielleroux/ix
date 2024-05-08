@@ -10,9 +10,10 @@ import {
   ElementHandle,
   Page,
   PageScreenshotOptions,
-  test as testBase,
   TestInfo,
 } from '@playwright/test';
+
+import { test as testBase } from '@chromatic-com/playwright';
 
 async function extendPageFixture(page: Page, testInfo: TestInfo) {
   const originalGoto = page.goto.bind(page);

@@ -50,7 +50,8 @@
     "luxon": "^3.4.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.32.1",
+    "@chromatic-com/playwright": "^0.6.6",
+    "@playwright/test": "^1.44.0",
     "@siemens/ix-icons": "^2.0.0",
     "@stencil-community/eslint-plugin": "^0.7.1",
     "@stencil-community/postcss": "^2.2.0",
@@ -69,6 +70,7 @@
     "animate.css": "~4.1.1",
     "autoprefixer": "10.4.5",
     "bootstrap": "^5.2.0",
+    "chromatic": "^11.3.0",
     "cssnano": "^6.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.56.0",
