@@ -23,57 +23,60 @@ Object.keys(pre.initialVersions).forEach((pkg) => {
   const version = pre.initialVersions[pkg];
   console.log(`Reset version ${pkg} to ${version}`);
 
-  const patchPkg = PROJECT.find(([projectPkg]) => projectPkg === pkg);
-  if (patchPkg) {
-    updatePackageJSON(patchPkg[1], patchPkg[0], version);
+  const localPkg = PROJECT.find(([p]) => p === pkg);
+
+  if (localPkg) {
+    setPkgVersion(localPkg[1], version);
   }
+
+  PROJECT.forEach((patchPkg) => {
+    updatePackageJSON(patchPkg[1], pkg, version);
+  });
 });
 
+function setPkgVersion(packageJSONPath, newVersion) {
+  const data = fs.readFileSync(packageJSONPath).toString();
+  const packageJSON = JSON.parse(data);
+
+  packageJSON.version = newVersion;
+
+  fs.writeFileSync(
+    packageJSONPath,
+    JSON.stringify(packageJSON, null, 2),
+    'utf8'
+  );
+}
+
 function updatePackageJSON(packageJSONPath, packageName, newVersion) {
-  fs.readFile(packageJSONPath, 'utf8', (err, data) => {
-    if (err) {
-      console.error('Error reading package.json:', err);
-      return;
-    }
+  const data = fs.readFileSync(packageJSONPath).toString();
+  const packageJSON = JSON.parse(data);
 
-    try {
-      const packageJSON = JSON.parse(data);
+  if (packageJSON.dependencies && packageJSON.dependencies[packageName]) {
+    const existingVersion = packageJSON.dependencies[packageName];
 
-      if (packageJSON.dependencies && packageJSON.dependencies[packageName]) {
-        const existingVersion = packageJSON.dependencies[packageName];
-        packageJSON.dependencies[packageName] = preserveSemVer(
-          existingVersion,
-          newVersion
-        );
-      }
-
-      if (
-        packageJSON.devDependencies &&
-        packageJSON.devDependencies[packageName]
-      ) {
-        const existingVersion = packageJSON.devDependencies[packageName];
-        packageJSON.devDependencies[packageName] = preserveSemVer(
-          existingVersion,
-          newVersion
-        );
-      }
-
-      fs.writeFile(
-        packageJSONPath,
-        JSON.stringify(packageJSON, null, 2),
-        'utf8',
-        (err) => {
-          if (err) {
-            console.error('Error writing to package.json:', err);
-            return;
-          }
-          console.log(`Successfully updated ${packageName} to ${newVersion}`);
-        }
+    if (!existingVersion.startsWith('workspace')) {
+      packageJSON.dependencies[packageName] = preserveSemVer(
+        existingVersion,
+        newVersion
       );
-    } catch (err) {
-      console.error('Error parsing package.json:', err);
     }
-  });
+  }
+
+  if (packageJSON.devDependencies && packageJSON.devDependencies[packageName]) {
+    const existingVersion = packageJSON.devDependencies[packageName];
+    if (!existingVersion.startsWith('workspace')) {
+      packageJSON.devDependencies[packageName] = preserveSemVer(
+        existingVersion,
+        newVersion
+      );
+    }
+  }
+
+  fs.writeFileSync(
+    packageJSONPath,
+    JSON.stringify(packageJSON, null, 2),
+    'utf8'
+  );
 }
 
 function preserveSemVer(existingVersion, newVersion) {
