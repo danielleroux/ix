@@ -99,7 +99,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Please add a changeset via `npx changeset` before attempting a snapshot release.
+            Please add a changeset via `pnpm changeset` before attempting a snapshot release.
 
       # https://github.com/atlassian/changesets/blob/master/docs/snapshot-releases.md
       - name: Release to pr tag
