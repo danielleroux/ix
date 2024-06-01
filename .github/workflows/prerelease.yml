@@ -64,7 +64,7 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'true' && !startsWith(github.event.head_commit.message, 'Version Packages')
         uses: changesets/action@v1
         with:
-          version: ci:version
+          version: pnpm ci:version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
