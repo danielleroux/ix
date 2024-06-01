@@ -1,5 +1,12 @@
 # @siemens/ix-react
 
+## 3.0.0-alpha.0
+
+### Patch Changes
+
+- Updated dependencies [[`c025a49c0`](https://github.com/siemens/ix/commit/c025a49c0216800274581ee67884e488c1bfdfce), [`b4b06a6b4`](https://github.com/siemens/ix/commit/b4b06a6b40a76e2749aad7134efeb53904b4dc8c), [`57fa02891`](https://github.com/siemens/ix/commit/57fa02891e0d81a44a470a4e3c17fe116af36925), [`756bc424a`](https://github.com/siemens/ix/commit/756bc424a8e0a1d26cb7058dfce5e5418e9ab569), [`9ee4aab8f`](https://github.com/siemens/ix/commit/9ee4aab8faa483cd3e066c353bfc34527ad88aa3), [`4418b8ceb`](https://github.com/siemens/ix/commit/4418b8cebda2f7dd475cfaba72e2240137fa5973), [`90a7b7194`](https://github.com/siemens/ix/commit/90a7b719405df0885823836964a0db99966fe458), [`5eea8d18b`](https://github.com/siemens/ix/commit/5eea8d18bfe80eaad111cb38b880f6a0a9cd0bd6), [`7f31b9459`](https://github.com/siemens/ix/commit/7f31b945994c6ca24550a2b7fac07d9a8db8fcb3), [`5b2df0c4d`](https://github.com/siemens/ix/commit/5b2df0c4d4e35a7224ac70cef22a1b89fef4a222), [`346fb9a2d`](https://github.com/siemens/ix/commit/346fb9a2dedf1f37d8c952b84567545b174eed10), [`47b6c8576`](https://github.com/siemens/ix/commit/47b6c8576811fd22299a9b8189fedeb0fe4df32d), [`1a0175f11`](https://github.com/siemens/ix/commit/1a0175f11e20afcd3e6d357a856c9c8764cfa390), [`a35859add`](https://github.com/siemens/ix/commit/a35859addcccffd56bc5844f0455decbdbcc11d2), [`55d9fca5b`](https://github.com/siemens/ix/commit/55d9fca5b41c1ae6fa257a4a1da69e4a0efaad34), [`fb48f05e5`](https://github.com/siemens/ix/commit/fb48f05e570e61a42ddd7cf3dae1eafafe236945), [`c1d4f7d6b`](https://github.com/siemens/ix/commit/c1d4f7d6b977945ded8e2f718d7b6df1f71f0557), [`7232606d6`](https://github.com/siemens/ix/commit/7232606d6d5f90f55535497fd79ea192b544ca79), [`e11a58110`](https://github.com/siemens/ix/commit/e11a58110c084ab7bbc136d2210335aad8727e34), [`544ceed83`](https://github.com/siemens/ix/commit/544ceed8349d94fe060dfcbd8d5f45526ec75dff)]:
+  - @siemens/ix@3.0.0-alpha.0
+
 ## 2.2.1
 
 ### Patch Changes

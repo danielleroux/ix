@@ -17,5 +17,27 @@
     "@siemens/ix-vue": "2.2.1",
     "vue-test-app": "2.1.2"
   },
-  "changesets": []
+  "changesets": [
+    "clean-walls-bake",
+    "cyan-plums-build",
+    "dry-avocados-sneeze",
+    "dry-roses-brake",
+    "empty-sloths-burn",
+    "giant-owls-explain",
+    "giant-ways-wave",
+    "gold-terms-develop",
+    "hot-sloths-fold",
+    "kind-maps-approve",
+    "large-oranges-float",
+    "popular-crabs-reply",
+    "proud-pianos-begin",
+    "quiet-pillows-jog",
+    "rare-eagles-laugh",
+    "silent-stingrays-pump",
+    "tame-shrimps-press",
+    "thin-spiders-press",
+    "twelve-swans-argue",
+    "twenty-phones-lay",
+    "wise-games-relate"
+  ]
 }
