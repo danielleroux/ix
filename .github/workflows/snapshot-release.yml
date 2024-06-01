@@ -107,7 +107,7 @@ jobs:
         run: |
           pnpm changeset version --snapshot pr-${{ github.event.issue.number }} && pnpm i --lockfile-only
           pnpm build --filter \!documentation
-          pnpm changeset publish --no-git-tag --snapshot --tag snapshot
+          pnpm changeset publish --no-git-tag --snapshot --tag snapshot --dry-run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
