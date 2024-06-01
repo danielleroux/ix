@@ -1,0 +1,60 @@
+name: Exit Prerelease Mode
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Exit prerelease mode on release branch'
+        type: string
+        default: 'release-'
+        required: true
+
+jobs:
+  exit_prerelease:
+    name: Changesets Exit Prerelease
+    runs-on: ubuntu-latest
+    # Allow GITHUB_TOKEN to have write permissions
+    permissions:
+      contents: write
+
+    steps:
+      # Check out the repository, using the Github Actions Bot app's token so
+      # that we can push later.
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          # Checkout release branch entered when workflow was kicked off
+          ref: ${{ github.event.inputs.branch }}
+          # Fetch entire git history so  Changesets can generate changelogs
+          # with the correct commits
+          fetch-depth: 0
+
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Write latest version to package.json and package-lock.json
+        run: |
+          version=$(npm show @siemens/ix version)
+          version_angular=$(npm show @siemens/ix-angular version)
+          version_react=$(npm show @siemens/ix-react version)
+          version_vue=$(npm show @siemens/ix-vue version)
+          version_aggrid=$(npm show @siemens/ix-aggrid version)
+          version_echarts=$(npm show @siemens/ix-echarts version)
+
+          npm --prefix ./packages/core pkg set version="$version"
+          npm --prefix ./packages/angular pkg set version="$version_angular"
+          npm --prefix ./packages/react pkg set version="$version_react"
+          npm --prefix ./packages/vue pkg set version="$version_vue"
+          npm --prefix ./packages/aggrid pkg set version="$version_aggrid"
+          npm --prefix ./packages/echarts pkg set version="$version_echarts"
+          pnpm i --lockfile-only
+
+      - name: Remove pre.json
+        run: pnpm rimraf .changeset/pre.json
+
+      - name: Commit and push changes
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          git commit -m "Exit prerelease mode"
+          git push
