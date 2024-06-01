@@ -33,7 +33,7 @@ jobs:
 
       - name: Write latest version to package.json and package-lock.json
         run: |
-          node ./scripts/exit-prerelease.js
+          node ./scripts/exit-prelease.js
           pnpm i --lockfile-only
 
       - name: Remove pre.json
