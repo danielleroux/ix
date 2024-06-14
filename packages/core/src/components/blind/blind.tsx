@@ -61,6 +61,12 @@ export class Blind {
   @Prop() variant: BlindVariant = 'insight';
 
   /**
+   * @internal
+   * REMOVE REMOVE REMOVE!!!!
+   */
+  @Prop() someObject: { fun: () => void };
+
+  /**
    * Collapsed state changed
    */
   @Event() collapsedChange: EventEmitter<boolean>;
@@ -79,6 +85,8 @@ export class Blind {
 
   componentDidLoad() {
     this.animateCollapse(this.collapsed);
+
+    this.someObject.fun();
   }
 
   get content() {
