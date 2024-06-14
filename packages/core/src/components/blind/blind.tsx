@@ -46,7 +46,7 @@ export class Blind {
    * Secondary label inside blind header
    * @since 2.0.0
    */
-  @Prop() sublabel: string;
+  @Prop() sublabel?: string;
 
   /**
    * Optional icon to be displayed next to the header label
@@ -59,12 +59,6 @@ export class Blind {
    * @since 2.0.0
    */
   @Prop() variant: BlindVariant = 'insight';
-
-  /**
-   * @internal
-   * REMOVE REMOVE REMOVE!!!!
-   */
-  @Prop() someObject: { fun: () => void };
 
   /**
    * Collapsed state changed
@@ -85,8 +79,6 @@ export class Blind {
 
   componentDidLoad() {
     this.animateCollapse(this.collapsed);
-
-    this.someObject.fun();
   }
 
   get content() {
