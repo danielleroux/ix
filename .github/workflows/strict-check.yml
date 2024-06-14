@@ -4,7 +4,7 @@ on:
   pull_request_target:
     branches:
       - '**'
-# test
+
 # Check is not necessary after strict is true IX-1332
 jobs:
   strict_check:
@@ -12,7 +12,7 @@ jobs:
       contents: read
       pull-requests: write
     if: |
-      github.repository == 'siemens/ix' &&
+      github.repository == 'danielleroux/ix' &&
       github.event.issue.pull_request
     strategy:
       matrix:
@@ -54,7 +54,7 @@ jobs:
       contents: read
       pull-requests: write
     if: |
-      github.repository == 'siemens/ix' &&
+      github.repository == 'danielleroux/ix' &&
       github.event.issue.pull_request
     needs: ['strict_check']
     runs-on: ubuntu-latest
