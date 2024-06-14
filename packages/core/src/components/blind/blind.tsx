@@ -46,7 +46,7 @@ export class Blind {
    * Secondary label inside blind header
    * @since 2.0.0
    */
-  @Prop() sublabel: string;
+  @Prop() sublabel?: string;
 
   /**
    * Optional icon to be displayed next to the header label
