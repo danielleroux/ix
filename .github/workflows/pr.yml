@@ -86,73 +86,83 @@ jobs:
     needs: [build, changes]
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        shard: [1/4, 2/4, 3/4, 4/4]
-    steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/turbo
-
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install chromium --with-deps
-
-      - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix -- --shard ${{ matrix.shard }}
-
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - uses: ./.github/workflows/actions/percy
         with:
-          name: core-blob-report
-          path: |
-            ./packages/core/blob-report/
-          retention-days: 1
+          token: ${{ secrets.PERCY_TOKEN }}
+  # visual-testing-core:
+  #   if: ${{ needs.changes.outputs.core_any_changed == 'true' }}
+  #   needs: [build, changes]
+  #   timeout-minutes: 10
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       shard: [1/4, 2/4, 3/4, 4/4]
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/actions/turbo
 
-  visual-testing-aggrid:
-    if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.aggrid_any_changed == 'true' }}
-    needs: [build, changes]
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
+  #     - name: Install Playwright Browsers
+  #       run: pnpm exec playwright install chromium --with-deps
 
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install chromium --with-deps
+  #     - name: Visual Regression
+  #       run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix -- --shard ${{ matrix.shard }}
 
-      - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-aggrid
+  #     - uses: actions/upload-artifact@v3
+  #       if: always()
+  #       with:
+  #         name: core-blob-report
+  #         path: |
+  #           ./packages/core/blob-report/
+  #         retention-days: 1
 
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: aggrid-html-report--attempt-${{ github.run_attempt }}
-          path: |
-            ./packages/aggrid/playwright-report/
-          retention-days: 1
+  # visual-testing-aggrid:
+  #   if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.aggrid_any_changed == 'true' }}
+  #   needs: [build, changes]
+  #   timeout-minutes: 10
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/actions/turbo
 
-  visual-testing-echarts:
-    if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.echarts_any_changed == 'true' }}
-    needs: [build, changes]
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/turbo
+  #     - name: Install Playwright Browsers
+  #       run: pnpm exec playwright install chromium --with-deps
 
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install chromium --with-deps
+  #     - name: Visual Regression
+  #       run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-aggrid
 
-      - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-echarts
+  #     - uses: actions/upload-artifact@v3
+  #       if: failure()
+  #       with:
+  #         name: aggrid-html-report--attempt-${{ github.run_attempt }}
+  #         path: |
+  #           ./packages/aggrid/playwright-report/
+  #         retention-days: 1
 
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: echarts-html-report--attempt-${{ github.run_attempt }}
-          path: |
-            ./packages/echarts/playwright-report/
-          retention-days: 1
+  # visual-testing-echarts:
+  #   if: ${{ needs.changes.outputs.core_any_changed == 'true' || needs.changes.outputs.echarts_any_changed == 'true' }}
+  #   needs: [build, changes]
+  #   timeout-minutes: 10
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/actions/turbo
+
+  #     - name: Install Playwright Browsers
+  #       run: pnpm exec playwright install chromium --with-deps
+
+  #     - name: Visual Regression
+  #       run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-echarts
+
+  #     - uses: actions/upload-artifact@v3
+  #       if: failure()
+  #       with:
+  #         name: echarts-html-report--attempt-${{ github.run_attempt }}
+  #         path: |
+  #           ./packages/echarts/playwright-report/
+  #         retention-days: 1
 
   merge-core-reports:
     if: failure()

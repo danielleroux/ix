@@ -1,0 +1,13 @@
+name: 'Run Percy'
+description: 'Run Percy'
+inputs:
+  token:
+    description: 'percy token'
+runs:
+  using: 'composite'
+  steps:
+    - name: Create snapshots
+      shell: bash
+      run: pnpm visual-regression --filter @siemens/ix
+      env:
+        PERCY_TOKEN: ${{ inputs.token }}

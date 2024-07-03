@@ -13,6 +13,19 @@ import {
   test as testBase,
   TestInfo,
 } from '@playwright/test';
+import percySnapshot from '@percy/playwright';
+
+declare module '@playwright/test' {
+  interface Page {
+    percySnapshot(): Promise<void>;
+  }
+}
+
+function extendPercySnapshot(page: Page, testInfo: TestInfo, theme: string) {
+  page.percySnapshot = async () => {
+    return percySnapshot(page, `${testInfo.title}:${theme}`);
+  };
+}
 
 async function extendPageFixture(page: Page, testInfo: TestInfo) {
   const originalGoto = page.goto.bind(page);
@@ -21,6 +34,7 @@ async function extendPageFixture(page: Page, testInfo: TestInfo) {
   testInfo.annotations.push({
     type: theme,
   });
+
   page.goto = async (url: string, options) => {
     const response = await originalGoto(
       `http://127.0.0.1:8080/src/tests/${url}?theme=${theme}`,
@@ -35,6 +49,8 @@ async function extendPageFixture(page: Page, testInfo: TestInfo) {
     await page.waitForTimeout(150);
     return originalSceenshot(options);
   };
+
+  extendPercySnapshot(page, testInfo, theme);
 
   return page;
 }
@@ -77,6 +93,9 @@ export const test = testBase.extend<{
     testInfo.annotations.push({
       type: theme,
     });
+
+    extendPercySnapshot(page, testInfo, theme);
+
     await page.goto(
       `http://127.0.0.1:8080/src/tests/utils/ct/index.html?theme=${theme}`
     );

@@ -15,7 +15,7 @@ regressionTest.describe('blind', () => {
     await page.goto('blind/basic');
     await page.waitForSelector('ix-blind');
     await page.waitForTimeout(1000);
-    expect(await page.screenshot({ fullPage: true })).toMatchSnapshot();
+    await page.percySnapshot();
   });
 
   regressionTest('collapsed', async ({ page }) => {
@@ -26,7 +26,7 @@ regressionTest.describe('blind', () => {
     await page.waitForSelector('.blind-header.closed');
     await page.waitForTimeout(800);
     await page.waitForSelector('ix-blind');
-    expect(await page.screenshot({ fullPage: true })).toMatchSnapshot();
+    await page.percySnapshot();
   });
 
   regressionTest('header-actions', async ({ page }) => {
@@ -34,12 +34,12 @@ regressionTest.describe('blind', () => {
     await page.locator('#context-menu').click();
     await page.waitForTimeout(800);
     await page.waitForSelector('ix-dropdown.show');
-    expect(await page.screenshot({ fullPage: true })).toMatchSnapshot();
+    await page.percySnapshot();
   });
 
   regressionTest('custom-header', async ({ page }) => {
     await page.goto('blind/custom-header');
-    expect(await page.screenshot({ fullPage: true })).toMatchSnapshot();
+    await page.percySnapshot();
   });
 
   test('should no hover on slot', async ({ mount, page }) => {
@@ -60,6 +60,6 @@ regressionTest.describe('blind', () => {
     const slotElement = page.getByTestId('slot');
     await slotElement.hover();
 
-    await expect(blindElement).toHaveScreenshot();
+    await page.percySnapshot();
   });
 });
