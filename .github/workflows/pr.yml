@@ -87,7 +87,9 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
       - uses: actions/checkout@v3
+
       - uses: ./.github/workflows/actions/turbo
+
       - uses: ./.github/workflows/actions/percy
         with:
           token: ${{ secrets.PERCY_TOKEN }}
