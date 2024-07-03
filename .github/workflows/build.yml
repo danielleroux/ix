@@ -24,8 +24,8 @@ jobs:
 
   visual-testing-core:
     needs: [build]
-    timeout-minutes: 10
     runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/actions/turbo
       - uses: ./.github/workflows/actions/percy
