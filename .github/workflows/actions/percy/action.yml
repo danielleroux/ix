@@ -6,6 +6,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Install Playwright Browsers
+      shell: bash
+      run: pnpm exec playwright install chromium --with-deps
+
     - name: Create snapshots
       shell: bash
       run: pnpm visual-regression --filter @siemens/ix

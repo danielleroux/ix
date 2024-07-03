@@ -27,12 +27,6 @@
       ],
       "outputLogs": "new-only"
     },
-    "pkg": {
-      "dependsOn": [
-        "^build"
-      ],
-      "cache": true
-    },
     "start": {
       "dependsOn": [
         "^build"
@@ -44,9 +38,9 @@
     },
     "visual-regression": {
       "dependsOn": [
-        "build"
+        "^build"
       ],
-      "cache": false
+      "cache": true
     },
     "test": {
       "dependsOn": [
