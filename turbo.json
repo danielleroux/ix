@@ -40,7 +40,7 @@
       "dependsOn": [
         "^build"
       ],
-      "cache": true
+      "cache": false
     },
     "test": {
       "dependsOn": [
