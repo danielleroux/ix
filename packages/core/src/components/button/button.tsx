@@ -131,7 +131,7 @@ export class Button {
         onFocus={() => this.setFocus()}
       >
         <BaseButton {...baseButtonProps}>
-          <slot></slot>
+          A<slot></slot>
         </BaseButton>
       </Host>
     );
