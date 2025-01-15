@@ -28,6 +28,8 @@ const meta = {
       type: 'figma',
       url: 'https://www.figma.com/design/r2nqdNNXXZtPmWuVjIlM1Q/iX-Components---Brand-Dark?node-id=225-5535&m=dev',
     },
+    chromatic: { disableSnapshot: true },
+
   },
 } satisfies Meta<Element>;
 
