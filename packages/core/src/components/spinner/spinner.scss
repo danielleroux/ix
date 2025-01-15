@@ -86,7 +86,10 @@
     border-radius: 100%;
     border: $track-size solid
       var(--ix-button-color, var(--theme-color-soft-text));
-    animation: clipMask 3s linear infinite;
+
+    // Expose animation duration as custom variables this is related to visual-testing.
+    // Some visual testing tools need to deactivate animations to take screenshots
+    animation: clipMask var(--ix-spinner-animation-duration, 3s) linear infinite;
   }
 
   .#{$size-name}:not(.hide-track)::before {
