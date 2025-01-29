@@ -1,0 +1,132 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'release/*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Build
+        run: pnpm build --cache-dir=.turbo
+
+      - name: Lint
+        run: pnpm lint
+
+  visual-testing-core:
+    needs: [build]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1/4, 2/4, 3/4, 4/4]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Visual Regression
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix -- --shard ${{ matrix.shard }}
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: core-blob-report
+          path: |
+            ./packages/core/blob-report/
+          retention-days: 1
+
+  visual-testing-aggrid:
+    needs: [build]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Visual Regression
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-aggrid
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: aggrid-html-report--attempt-${{ github.run_attempt }}
+          path: |
+            ./packages/aggrid/playwright-report/
+          retention-days: 1
+
+  visual-testing-echarts:
+    needs: [build]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Visual Regression
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix-echarts
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: echarts-html-report--attempt-${{ github.run_attempt }}
+          path: |
+            ./packages/echarts/playwright-report/
+          retention-days: 1
+
+  merge-core-reports:
+    if: failure()
+    needs: [visual-testing-core]
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Download blob reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: core-blob-report
+          path: all-blob-reports
+
+      - name: Merge into HTML Report
+        run: pnpm exec playwright merge-reports --reporter html ./all-blob-reports
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v3
+        with:
+          name: core-html-report--attempt-${{ github.run_attempt }}
+          path: playwright-report
+          retention-days: 2
+
+  unit:
+    needs: [build]
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Test
+        run: pnpm run test --cache-dir=.turbo --filter !\documentation
